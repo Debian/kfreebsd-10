@@ -31,8 +31,8 @@ endif
 
 #SVN		:= http://svn.freebsd.org/base/release/$(version).0
 #SVN		:= http://svn.freebsd.org/base/releng/$(version)
-#SVN		:= http://svn.freebsd.org/base/stable/$(major)
-SVN		:= http://svn.freebsd.org/base/head
+SVN		:= http://svn.freebsd.org/base/stable/$(major)
+#SVN		:= http://svn.freebsd.org/base/head
 SOURCE_PACKAGE	:= $(CURDIR)/debian/kfreebsd-source-$(version)
 IMAGE_PACKAGE	:= $(CURDIR)/debian/kfreebsd-image-$(version)-$(abiname)
 HEADERS_PACKAGE	:= $(CURDIR)/debian/kfreebsd-headers-$(version)-$(abiname)
