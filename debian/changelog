@@ -7,6 +7,8 @@ kfreebsd-10 (10.0~svn256281-1) UNRELEASED; urgency=low
   [ Robert Millan ]
   * Only build with Clang on architectures where it is the default in
     upstream.
+  * Remove (disabled) patch 006_mips_i8259_alloc.diff. Problem has been
+    fixed in upstream already.
 
  -- Robert Millan <rmh@debian.org>  Thu, 10 Oct 2013 19:59:49 +0200
 
