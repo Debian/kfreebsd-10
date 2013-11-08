@@ -6,6 +6,7 @@ kfreebsd-10 (10.0~svn257123-2) UNRELEASED; urgency=low
   [ Steven Chamberlain ]
   * The wildcard for ARM is any-arm.
   * Don't make sys/conf/kmod_syms.awk executable.
+  * Brand kernel image as FreeBSD type, in case not building on kfreebsd
 
  -- Robert Millan <rmh@debian.org>  Sat, 02 Nov 2013 14:08:05 +0100
 
