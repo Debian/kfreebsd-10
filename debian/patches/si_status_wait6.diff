@@ -1,0 +1,94 @@
+------------------------------------------------------------------------
+r258281 | jilles | 2013-11-17 23:31:23 +0100 (dg, 17 nov 2013) | 15 lines
+
+Fix siginfo_t.si_status for wait6/waitid/SIGCHLD.
+
+Per POSIX, si_status should contain the value passed to exit() for
+si_code==CLD_EXITED and the signal number for other si_code. This was
+incorrect for CLD_EXITED and CLD_DUMPED.
+
+This is still not fully POSIX-compliant (Austin group issue #594 says that
+the full value passed to exit() shall be returned via si_status, not just
+the low 8 bits) but is sufficient for a si_status-related test in libnih
+(upstart, Debian/kFreeBSD).
+
+PR:		kern/184002
+Reported by:	Dmitrijs Ledkovs
+Tested by:	Dmitrijs Ledkovs
+
+--- a/sys/kern/kern_exit.c
++++ b/sys/kern/kern_exit.c
+@@ -974,16 +974,19 @@
+ 		 *  This is still a rough estimate.  We will fix the
+ 		 *  cases TRAPPED, STOPPED, and CONTINUED later.
+ 		 */
+-		if (WCOREDUMP(p->p_xstat))
++		if (WCOREDUMP(p->p_xstat)) {
+ 			siginfo->si_code = CLD_DUMPED;
+-		else if (WIFSIGNALED(p->p_xstat))
++			siginfo->si_status = WTERMSIG(p->p_xstat);
++		} else if (WIFSIGNALED(p->p_xstat)) {
+ 			siginfo->si_code = CLD_KILLED;
+-		else
++			siginfo->si_status = WTERMSIG(p->p_xstat);
++		} else {
+ 			siginfo->si_code = CLD_EXITED;
++			siginfo->si_status = WEXITSTATUS(p->p_xstat);
++		}
+ 
+ 		siginfo->si_pid = p->p_pid;
+ 		siginfo->si_uid = p->p_ucred->cr_uid;
+-		siginfo->si_status = p->p_xstat;
+ 
+ 		/*
+ 		 * The si_addr field would be useful additional
+--- a/sys/kern/kern_sig.c
++++ b/sys/kern/kern_sig.c
+@@ -2959,7 +2959,7 @@
+ }
+ 
+ static void
+-childproc_jobstate(struct proc *p, int reason, int status)
++childproc_jobstate(struct proc *p, int reason, int sig)
+ {
+ 	struct sigacts *ps;
+ 
+@@ -2979,7 +2979,7 @@
+ 	mtx_lock(&ps->ps_mtx);
+ 	if ((ps->ps_flag & PS_NOCLDSTOP) == 0) {
+ 		mtx_unlock(&ps->ps_mtx);
+-		sigparent(p, reason, status);
++		sigparent(p, reason, sig);
+ 	} else
+ 		mtx_unlock(&ps->ps_mtx);
+ }
+@@ -2987,6 +2987,7 @@
+ void
+ childproc_stopped(struct proc *p, int reason)
+ {
++	/* p_xstat is a plain signal number, not a full wait() status here. */
+ 	childproc_jobstate(p, reason, p->p_xstat);
+ }
+ 
+@@ -3000,13 +3001,15 @@
+ childproc_exited(struct proc *p)
+ {
+ 	int reason;
+-	int status = p->p_xstat; /* convert to int */
++	int xstat = p->p_xstat; /* convert to int */
++	int status;
+ 
+-	reason = CLD_EXITED;
+-	if (WCOREDUMP(status))
+-		reason = CLD_DUMPED;
+-	else if (WIFSIGNALED(status))
+-		reason = CLD_KILLED;
++	if (WCOREDUMP(xstat))
++		reason = CLD_DUMPED, status = WTERMSIG(xstat);
++	else if (WIFSIGNALED(xstat))
++		reason = CLD_KILLED, status = WTERMSIG(xstat);
++	else
++		reason = CLD_EXITED, status = WEXITSTATUS(xstat);
+ 	/*
+ 	 * XXX avoid calling wakeup(p->p_pptr), the work is
+ 	 * done in exit1().

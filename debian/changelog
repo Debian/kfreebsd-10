@@ -7,13 +7,15 @@ kfreebsd-10 (10.0~svn258623-1) UNRELEASED; urgency=low
 
   [ Robert Millan ]
   * Disable mipsel builds.  (Closes: #727829)
+  * si_status_wait6.diff: Chery-pick r258281 from HEAD to fix
+    siginfo_t.si_status for wait6/waitid/SIGCHLD. (Closes: #729698)
 
   [ Steven Chamberlain ]
   * The wildcard for ARM is any-arm.
   * Don't make sys/conf/kmod_syms.awk executable.
   * Brand kernel image as FreeBSD type, in case not building on kfreebsd
 
- -- Robert Millan <rmh@debian.org>  Tue, 26 Nov 2013 14:14:02 +0100
+ -- Robert Millan <rmh@debian.org>  Tue, 26 Nov 2013 14:50:55 +0100
 
 kfreebsd-10 (10.0~svn257123-1) experimental; urgency=low
 
