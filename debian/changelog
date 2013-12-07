@@ -1,3 +1,9 @@
+kfreebsd-10 (10.0~svn258623-2) UNRELEASED; urgency=low
+
+  * Fetch source code securely (https) in get-orig-source.
+
+ -- Robert Millan <rmh@debian.org>  Sat, 07 Dec 2013 23:22:57 +0100
+
 kfreebsd-10 (10.0~svn258623-1) experimental; urgency=low
 
   * New upstream snapshot.
