@@ -10,6 +10,7 @@ SHELL = bash
 DEB_HOST_ARCH_OS	?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
 DEB_HOST_ARCH_CPU	?= $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU)
 
+source		:= $(shell dpkg-parsechangelog | grep ^Source: | sed -e 's/^.*: //g')
 full_version	:= $(shell dpkg-parsechangelog | grep ^Version: | sed -e 's/^.*: //g')
 tar_version	:= $(shell echo $(full_version) | sed -e 's/-.*//g')
 svn_revision	:= $(shell echo $(full_version) | sed -e 's/.*~svn\([0-9]*\)-[0-9]*/\1/g' -e 's/^$(full_version)$$/HEAD/g')
@@ -40,8 +41,8 @@ SRC_TAR		:= kfreebsd-source-$(version).tar.xz
 SRC_DIR		:= kfreebsd-source-$(version)
 HEADERS_DIR	:= kfreebsd-headers-$(version)-$(abiname)
 FLAVOR_DIR	:= flavor-$(version)-$(abiname)
-ORIG_DIR	:= kfreebsd-$(major)-$(tar_version)
-ORIG_TAR	:= kfreebsd-$(major)_$(tar_version).orig.tar.xz
+ORIG_DIR	:= $(source)-$(tar_version)
+ORIG_TAR	:= $(source)_$(tar_version).orig.tar.xz
 MAKE		:= make MACHINE_ARCH=$(kfreebsd_cpu) -DWITHOUT_SOURCELESS
 PATH		:= /usr/lib/freebsd:$(PATH)
 
