@@ -1,8 +1,12 @@
-kfreebsd-10 (10.0~svn258623-2) UNRELEASED; urgency=low
+kfreebsd-10 (10.0~svn259068-1) UNRELEASED; urgency=low
 
+  * New upstream snapshot.
+    - Switch to releng/10.0 branch.
+
+  [ Robert Millan ]
   * Fetch source code securely (https) in get-orig-source.
 
- -- Robert Millan <rmh@debian.org>  Sat, 07 Dec 2013 23:22:57 +0100
+ -- Robert Millan <rmh@debian.org>  Sun, 08 Dec 2013 12:40:08 +0100
 
 kfreebsd-10 (10.0~svn258623-1) experimental; urgency=low
 
