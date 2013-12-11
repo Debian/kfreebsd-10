@@ -76,8 +76,8 @@
 +device		pty
 +
 +# Toggle to enable/disable debug options.
-+include		DEBIAN_DEBUG
-+#include	DEBIAN_NODEBUG
++#include		DEBIAN_DEBUG
++include		DEBIAN_NODEBUG
 +
 +# Alternate queueing
 +options		ALTQ
