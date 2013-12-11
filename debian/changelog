@@ -1,6 +1,7 @@
 kfreebsd-10 (10.0~svn259068-2) UNRELEASED; urgency=low
 
   * Disable DEBIAN_DEBUG options.
+  * Remove -686-smp transitional packages (NPOASR).
 
  -- Robert Millan <rmh@debian.org>  Wed, 11 Dec 2013 23:13:56 +0100
 
