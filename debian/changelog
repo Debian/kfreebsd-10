@@ -1,8 +1,13 @@
-kfreebsd-10 (10.0~svn259404-2) UNRELEASED; urgency=low
+kfreebsd-10 (10.0~svn259778-1) UNRELEASED; urgency=medium
 
+  * New upstream snapshot (10.0-RC3).
+    - Set urgency to medium given that -RC2 has already been in
+      unstable for 7 days.
+
+  [ Robert Millan ]
   * Build and install linker.hints. (Closes: #684595)
 
- -- Robert Millan <rmh@debian.org>  Tue, 17 Dec 2013 22:43:36 +0100
+ -- Robert Millan <rmh@debian.org>  Tue, 24 Dec 2013 13:42:34 +0100
 
 kfreebsd-10 (10.0~svn259404-1) unstable; urgency=low
 
