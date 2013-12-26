@@ -1,4 +1,4 @@
-kfreebsd-10 (10.0~svn259778-1) UNRELEASED; urgency=medium
+kfreebsd-10 (10.0~svn259778-1) unstable; urgency=medium
 
   * New upstream snapshot (10.0-RC3).
     - Set urgency to medium given that -RC2 has already been in
@@ -9,7 +9,7 @@ kfreebsd-10 (10.0~svn259778-1) UNRELEASED; urgency=medium
     what to do about the regressions (e.g. #732692)
     (this doesn't fix #684595 yet...)
 
- -- Robert Millan <rmh@debian.org>  Tue, 24 Dec 2013 13:42:34 +0100
+ -- Robert Millan <rmh@debian.org>  Thu, 26 Dec 2013 01:32:04 +0100
 
 kfreebsd-10 (10.0~svn259404-1) unstable; urgency=low
 
