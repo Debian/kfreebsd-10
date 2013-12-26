@@ -5,7 +5,9 @@ kfreebsd-10 (10.0~svn259778-1) UNRELEASED; urgency=medium
       unstable for 7 days.
 
   [ Robert Millan ]
-  * Build and install linker.hints. (Closes: #684595)
+  * Build linker.hints, but don't install it yet. We need to decide
+    what to do about the regressions (e.g. #732692)
+    (this doesn't fix #684595 yet...)
 
  -- Robert Millan <rmh@debian.org>  Tue, 24 Dec 2013 13:42:34 +0100
 

@@ -256,6 +256,9 @@ install-flavor-%-stamp: install-common-stamp build-flavor-%-stamp
 	# it can't find kldxref).
 	test -e $(IMAGE_PACKAGE)-$*/lib/modules/$(version)-$(abiname)-$*/linker.hints
 
+# FIXME: We're not ready yet. We need to decide what to do about the regressions (e.g. #732692)
+	rm -f $(IMAGE_PACKAGE)-$*/lib/modules/$(version)-$(abiname)-$*/linker.hints
+
 	# remove loader.conf (part of kfreebsd-loader)
 	rm -f $(IMAGE_PACKAGE)-$*/boot/loader.conf
 	rm -rf $(IMAGE_PACKAGE)-$*/boot/defaults
