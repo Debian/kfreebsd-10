@@ -1,3 +1,9 @@
+kfreebsd-10 (10.0~svn259778-2) UNRELEASED; urgency=low
+
+  * Only assert linker.hints presence on kfreebsd-any.
+
+ -- Robert Millan <rmh@debian.org>  Fri, 27 Dec 2013 14:23:16 +0100
+
 kfreebsd-10 (10.0~svn259778-1) unstable; urgency=medium
 
   * New upstream snapshot (10.0-RC3).
