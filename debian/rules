@@ -43,8 +43,20 @@ HEADERS_DIR	:= kfreebsd-headers-$(version)-$(abiname)
 FLAVOR_DIR	:= flavor-$(version)-$(abiname)
 ORIG_DIR	:= $(source)-$(tar_version)
 ORIG_TAR	:= $(source)_$(tar_version).orig.tar.xz
-MAKE		:= make MACHINE_ARCH=$(kfreebsd_cpu) -DWITHOUT_SOURCELESS
 PATH		:= /usr/lib/freebsd:$(PATH)
+
+ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+	NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+
+	# Do not mess with MAKEFLAGS until we transfer control to BSD make (see below)
+	BSD_MAKEFLAGS += -j$(NUMJOBS)
+endif
+
+MAKE		:= \
+		MAKEFLAGS=$(BSD_MAKEFLAGS) \
+		make \
+		MACHINE_ARCH=$(kfreebsd_cpu) \
+		-DWITHOUT_SOURCELESS
 
 # Clang is the default compiler on these architectures (see src/share/mk/bsd.own.mk)
 clang_cpus	:= i386 amd64 arm
