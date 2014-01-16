@@ -1,6 +1,7 @@
 kfreebsd-10 (10.0-1) unstable; urgency=high
 
   * New upstream release.
+    - Bumped abiname to 1
 
   [ Robert Millan ]
   * Only assert linker.hints presence on kfreebsd-any.
@@ -389,6 +390,7 @@ kfreebsd-10 (10.0~svn226224-1) experimental; urgency=low
 kfreebsd-10 (10.0~svn225709-1) experimental; urgency=low
 
   * New upstream snapshot.  Begin tracking 10-CURRENT.
+    - Reset abiname to 0
 
   [ Robert Millan ]
   * Relax grub-common requirement now that ada support has been
@@ -1102,6 +1104,7 @@ kfreebsd-6 (6.2-3) unreleased; urgency=low
   * debian/rules:
     - add support for ~ in the version number.
     - remove the hack for preliminar snapshots.
+    - bumped abiname to 1
 
  -- Aurelien Jarno <aurel32@debian.org>  Wed, 11 Jul 2007 05:12:02 +0200
 
