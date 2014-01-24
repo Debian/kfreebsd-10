@@ -1,3 +1,9 @@
+kfreebsd-10 (10.0-2) UNRELEASED; urgency=low
+
+  * Accept O_CLOEXEC in shm_open().
+
+ -- Robert Millan <rmh@debian.org>  Fri, 24 Jan 2014 22:32:32 +0100
+
 kfreebsd-10 (10.0-1) unstable; urgency=high
 
   * New upstream release.

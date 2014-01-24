@@ -1,5 +1,6 @@
 # Patches from (or merged in) upstream
 si_status_wait6.diff
+accept_O_CLOEXEC_in_shm_open.diff
 
 # Patches that are in good shape for merging upstream
 mount_remount.diff

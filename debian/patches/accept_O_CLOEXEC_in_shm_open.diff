@@ -1,0 +1,14 @@
+
+Cherry-pick from HEAD (rev 261138)
+
+--- a/sys/kern/uipc_shm.c
++++ b/sys/kern/uipc_shm.c
+@@ -704,7 +704,7 @@
+ 	    (uap->flags & O_ACCMODE) != O_RDWR)
+ 		return (EINVAL);
+ 
+-	if ((uap->flags & ~(O_ACCMODE | O_CREAT | O_EXCL | O_TRUNC)) != 0)
++	if ((uap->flags & ~(O_ACCMODE | O_CREAT | O_EXCL | O_TRUNC | O_CLOEXEC)) != 0)
+ 		return (EINVAL);
+ 
+ 	fdp = td->td_proc->p_fd;
