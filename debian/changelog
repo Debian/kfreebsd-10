@@ -3,6 +3,9 @@ kfreebsd-10 (10.0-2) UNRELEASED; urgency=low
   * Accept O_CLOEXEC in shm_open().
   * radeonkms: Disable R600+ drivers when no firmware blob is available.
     (Closes: #732692)
+  * firmware_load.diff: Loads firmware blobs from /lib/firmware/.
+    Currently supports radeonkmsfw, ral, iwi, wpi, wpi, ipw, iwn and
+    rsu. (Closes: #642468)
 
  -- Robert Millan <rmh@debian.org>  Fri, 24 Jan 2014 22:32:32 +0100
 
