@@ -1,9 +1,9 @@
 # Patches from (or merged in) upstream
 si_status_wait6.diff
 accept_O_CLOEXEC_in_shm_open.diff
+radeonkms_abort_nofw.diff
 
 # Patches that are in good shape for merging upstream
-radeonkms_abort_nofw.diff
 mount_remount.diff
 
 # Other patches that might or might not be mergeable
