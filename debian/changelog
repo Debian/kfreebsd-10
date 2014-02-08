@@ -1,4 +1,4 @@
-kfreebsd-10 (10.0-2) UNRELEASED; urgency=low
+kfreebsd-10 (10.0-2) unstable; urgency=low
 
   * Accept O_CLOEXEC in shm_open().
   * radeonkms: Disable R600+ drivers when no firmware blob is available.
@@ -7,7 +7,7 @@ kfreebsd-10 (10.0-2) UNRELEASED; urgency=low
     Currently supports radeonkmsfw, ral, iwi, wpi, wpi, ipw, iwn and
     rsu. (Closes: #642468)
 
- -- Robert Millan <rmh@debian.org>  Fri, 24 Jan 2014 22:32:32 +0100
+ -- Robert Millan <rmh@debian.org>  Sat, 08 Feb 2014 15:14:00 +0100
 
 kfreebsd-10 (10.0-1) unstable; urgency=high
 
