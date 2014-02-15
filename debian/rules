@@ -164,6 +164,8 @@ install-indep-stamp: build-indep
 
 	mkdir -p $(SOURCE_PACKAGE)/usr/src
 	chown -R root.src $(SRC_DIR)
+	# Avoid the top-level directory timestamp changing
+	touch $(SRC_DIR) --reference=$(SRC_DIR)/sys
 	tar cfJ $(SOURCE_PACKAGE)/usr/src/$(SRC_TAR) $(SRC_DIR)
 
 	touch install-indep-stamp
