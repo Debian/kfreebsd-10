@@ -1,6 +1,10 @@
 kfreebsd-10 (10.0-3) UNRELEASED; urgency=low
 
+  [ Steven Chamberlain ]
   * Avoid a varying timestamp in kfreebsd-source tar.xz file
+
+  [ Robert Millan ]
+  * B-D on freebsd-buildutils with reliable kldxref.
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Sat, 15 Feb 2014 01:07:03 +0000
 
