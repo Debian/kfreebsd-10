@@ -1,4 +1,4 @@
-kfreebsd-10 (10.0-3) UNRELEASED; urgency=low
+kfreebsd-10 (10.0-3) experimental; urgency=low
 
   [ Steven Chamberlain ]
   * Avoid a varying timestamp in kfreebsd-source tar.xz file
@@ -7,7 +7,7 @@ kfreebsd-10 (10.0-3) UNRELEASED; urgency=low
   * B-D on freebsd-buildutils with reliable kldxref.
   * Merge Newcons / VT from stable/10 branch.
 
- -- Steven Chamberlain <steven@pyro.eu.org>  Sat, 15 Feb 2014 01:07:03 +0000
+ -- Robert Millan <rmh@debian.org>  Mon, 10 Mar 2014 13:32:14 +0100
 
 kfreebsd-10 (10.0-2) unstable; urgency=low
 
