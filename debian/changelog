@@ -5,6 +5,7 @@ kfreebsd-10 (10.0-3) UNRELEASED; urgency=low
 
   [ Robert Millan ]
   * B-D on freebsd-buildutils with reliable kldxref.
+  * Merge Newcons / VT from stable/10 branch.
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Sat, 15 Feb 2014 01:07:03 +0000
 
