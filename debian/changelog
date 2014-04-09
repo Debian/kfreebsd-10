@@ -1,3 +1,11 @@
+kfreebsd-10 (10.0-4) UNRELEASED; urgency=high
+
+  [ Steven Chamberlain ]
+  * Pick SVN 264266 from FreeBSD 10-STABLE to fix SA-14:05 / CVE-2014-1453:
+    Deadlock in the NFS server
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Wed, 09 Apr 2014 01:18:52 +0100
+
 kfreebsd-10 (10.0-3) experimental; urgency=low
 
   [ Steven Chamberlain ]
