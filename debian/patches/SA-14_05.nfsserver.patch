@@ -5,8 +5,8 @@ Bug: http://security.FreeBSD.org/advisories/FreeBSD-SA-14:05.nfsserver.asc
 Bug-Debian: http://bugs.debian.org/743988
 Applied-Upstream: http://svnweb.freebsd.org/base?view=revision&revision=264266
 
---- kfreebsd-10-10.0.orig/sys/fs/nfsserver/nfs_nfsdserv.c
-+++ kfreebsd-10-10.0/sys/fs/nfsserver/nfs_nfsdserv.c
+--- a/sys/fs/nfsserver/nfs_nfsdserv.c
++++ b/sys/fs/nfsserver/nfs_nfsdserv.c
 @@ -1457,10 +1457,23 @@
  		nfsvno_relpathbuf(&fromnd);
  		goto out;
