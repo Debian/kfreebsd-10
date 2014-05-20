@@ -5,7 +5,8 @@ radeonkms_abort_nofw.diff
 newcons.diff
 SA-14_05.nfsserver.patch
 SA-14_08.tcp.patch
-EN-14_05.execve.patch
+EN-14_05.ciss.patch
+EN-14_06.execve.patch
 
 # Patches that are in good shape for merging upstream
 mount_remount.diff

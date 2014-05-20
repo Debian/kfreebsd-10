@@ -1,5 +1,5 @@
 Description:
- Fix triple fault on execve from 64-bit thread to 32-bit process. [EN-14:05]
+ Fix triple fault on execve from 64-bit thread to 32-bit process. [EN-14:06]
 Origin: vendor
 Bug-Debian: http://bugs.debian.org/748744
 Applied-Upstream: http://svnweb.freebsd.org/base?view=revision&revision=266464
