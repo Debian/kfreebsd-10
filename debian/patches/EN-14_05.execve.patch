@@ -1,0 +1,68 @@
+Description:
+ Fix triple fault on execve from 64-bit thread to 32-bit process. [EN-14:05]
+Origin: vendor
+Bug-Debian: http://bugs.debian.org/748744
+Applied-Upstream: http://svnweb.freebsd.org/base?view=revision&revision=266464
+
+--- kfreebsd-10-10.0.orig/sys/kern/kern_exec.c
++++ kfreebsd-10-10.0/sys/kern/kern_exec.c
+@@ -283,6 +283,7 @@
+ 	struct mac *mac_p;
+ {
+ 	struct proc *p = td->td_proc;
++	struct vmspace *oldvmspace;
+ 	int error;
+ 
+ 	AUDIT_ARG_ARGV(args->begin_argv, args->argc,
+@@ -299,6 +300,8 @@
+ 		PROC_UNLOCK(p);
+ 	}
+ 
++	KASSERT((td->td_pflags & TDP_EXECVMSPC) == 0, ("nested execve"));
++	oldvmspace = td->td_proc->p_vmspace;
+ 	error = do_execve(td, args, mac_p);
+ 
+ 	if (p->p_flag & P_HADTHREADS) {
+@@ -313,6 +316,12 @@
+ 			thread_single_end();
+ 		PROC_UNLOCK(p);
+ 	}
++	if ((td->td_pflags & TDP_EXECVMSPC) != 0) {
++		KASSERT(td->td_proc->p_vmspace != oldvmspace,
++		    ("oldvmspace still used"));
++		vmspace_free(oldvmspace);
++		td->td_pflags &= ~TDP_EXECVMSPC;
++	}
+ 
+ 	return (error);
+ }
+--- kfreebsd-10-10.0.orig/sys/vm/vm_map.c
++++ kfreebsd-10-10.0/sys/vm/vm_map.c
+@@ -3725,6 +3725,8 @@
+ 	struct vmspace *oldvmspace = p->p_vmspace;
+ 	struct vmspace *newvmspace;
+ 
++	KASSERT((curthread->td_pflags & TDP_EXECVMSPC) == 0,
++	    ("vmspace_exec recursed"));
+ 	newvmspace = vmspace_alloc(minuser, maxuser, NULL);
+ 	if (newvmspace == NULL)
+ 		return (ENOMEM);
+@@ -3741,7 +3743,7 @@
+ 	PROC_VMSPACE_UNLOCK(p);
+ 	if (p == curthread->td_proc)
+ 		pmap_activate(curthread);
+-	vmspace_free(oldvmspace);
++	curthread->td_pflags |= TDP_EXECVMSPC;
+ 	return (0);
+ }
+ 
+--- kfreebsd-10-10.0.orig/sys/sys/proc.h
++++ kfreebsd-10-10.0/sys/sys/proc.h
+@@ -424,6 +424,7 @@
+ #define	TDP_RESETSPUR	0x04000000 /* Reset spurious page fault history. */
+ #define	TDP_NERRNO	0x08000000 /* Last errno is already in td_errno */
+ #define	TDP_UIOHELD	0x10000000 /* Current uio has pages held in td_ma */
++#define	TDP_EXECVMSPC	0x40000000 /* Execve destroyed old vmspace */
+ 
+ /*
+  * Reasons that the current thread can not be run yet.

@@ -1,3 +1,12 @@
+kfreebsd-10 (10.0-6) UNRELEASED; urgency=high
+
+  * Team upload.
+  * Pick SVN 266464 from FreeBSD CURRENT to fix EN-14:05:
+    Triple fault on execve from 64-bit thread to 32-bit process
+    (Closes: Bug#748744)
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Tue, 20 May 2014 12:47:21 +0100
+
 kfreebsd-10 (10.0-5) unstable; urgency=high
 
   [ Christoph Egger ]
