@@ -5,7 +5,7 @@ kfreebsd-10 (10.0-6) UNRELEASED; urgency=high
     ciss(4) potential data corruption bug (Closes: #748079)
   * Pick SVN 266464 from FreeBSD CURRENT to fix EN-14:06:
     Triple fault on execve from 64-bit thread to 32-bit process
-    (Closes: Bug#748744)
+    (Closes: #748744)
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Tue, 20 May 2014 12:47:21 +0100
 
@@ -25,7 +25,7 @@ kfreebsd-10 (10.0-4) unstable; urgency=low
 
   [ Steven Chamberlain ]
   * Pick SVN 264266 from FreeBSD 10-STABLE to fix SA-14:05 / CVE-2014-1453:
-    Deadlock in the NFS server
+    Deadlock in the NFS server (Closes: #743988)
 
  -- Robert Millan <rmh@debian.org>  Sat, 12 Apr 2014 18:24:27 +0200
 
