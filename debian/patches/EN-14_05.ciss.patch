@@ -1,7 +1,5 @@
-Index: sys/dev/ciss/ciss.c
-===================================================================
---- sys/dev/ciss/ciss.c	(revision 264509)
-+++ sys/dev/ciss/ciss.c	(revision 264510)
+--- kfreebsd-10-10.0.orig/sys/dev/ciss/ciss.c
++++ kfreebsd-10-10.0/sys/dev/ciss/ciss.c
 @@ -180,8 +180,6 @@
  static void	ciss_cam_poll(struct cam_sim *sim);
  static void	ciss_cam_complete(struct ciss_request *cr);
@@ -63,12 +61,3 @@ Index: sys/dev/ciss/ciss.c
  	return(0);
      }
      sc->ciss_logical[bus][target].cl_name[0] = 0;
-Index: .
-===================================================================
---- .	(revision 264509)
-+++ .	(revision 264510)
-
-Property changes on: .
-___________________________________________________________________
-Modified: svn:mergeinfo
-   Merged /head:r264354
