@@ -52,11 +52,11 @@
 +			     target, 0);
 +
 +    if (status == CAM_REQ_CMP) {
-+	xpt_path_lock(path);
++    	mtx_lock(&sc->ciss_mtx);
 +	periph = cam_periph_find(path, NULL);
  	sprintf(sc->ciss_logical[bus][target].cl_name, "%s%d",
  		periph->periph_name, periph->unit_number);
-+	xpt_path_unlock(path);
++    	mtx_unlock(&sc->ciss_mtx);
 +	xpt_free_path(path);
  	return(0);
      }

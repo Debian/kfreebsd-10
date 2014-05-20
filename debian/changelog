@@ -1,11 +1,11 @@
 kfreebsd-10 (10.0-6) UNRELEASED; urgency=high
 
   * Team upload.
-  * Pick SVN 264510 from FreeBSD 10-STABLE to fix EN-14:05:
+  * Pick SVN 265987 from FreeBSD 10.0-RELEASE to fix EN-14:05:
     ciss(4) potential data corruption bug (Closes: #748079)
   * Pick SVN 266464 from FreeBSD CURRENT to fix EN-14:06:
     Triple fault on execve from 64-bit thread to 32-bit process
-    (Closes: #748744)
+    (Closes: Bug#748744)
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Tue, 20 May 2014 12:47:21 +0100
 
