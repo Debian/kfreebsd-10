@@ -2,7 +2,7 @@
 +++ b/sys/amd64/conf/GENERIC
 @@ -18,8 +18,8 @@
  #
- # $FreeBSD$
+ # $FreeBSD: stable/10/sys/amd64/conf/GENERIC 268813 2014-07-17 22:31:46Z imp $
  
 -cpu		HAMMER
 -ident		GENERIC
@@ -24,7 +24,7 @@
 +++ b/sys/i386/conf/GENERIC
 @@ -18,10 +18,10 @@
  #
- # $FreeBSD$
+ # $FreeBSD: stable/10/sys/i386/conf/GENERIC 268813 2014-07-17 22:31:46Z imp $
  
 -cpu		I486_CPU
 -cpu		I586_CPU
@@ -48,7 +48,7 @@
  options 	SYSVSHM			# SYSV-style shared memory
 --- /dev/null
 +++ b/sys/conf/DEBIAN
-@@ -0,0 +1,40 @@
+@@ -0,0 +1,52 @@
 +# Common options to all Debian GNU/kFreeBSD kernels
 +
 +options		LINPROCFS
@@ -89,6 +89,18 @@
 +
 +# Disable binary blobs
 +include		WITHOUT_SOURCELESS
++
++# In order to enable IPSEC you MUST also add device crypto to
++# your kernel configuration
++device          crypto          # core crypto support
++
++options         IPSEC                   #IP security (requires device crypto)
++#options        IPSEC_DEBUG             #debug for IP security
++#
++# Set IPSEC_NAT_T to enable NAT-Traversal support.  This enables
++# optional UDP encapsulation of ESP packets.
++#
++options         IPSEC_NAT_T             #NAT-T support, UDP encap of ESP
 --- /dev/null
 +++ b/sys/conf/DEBIAN_DEBUG
 @@ -0,0 +1,22 @@

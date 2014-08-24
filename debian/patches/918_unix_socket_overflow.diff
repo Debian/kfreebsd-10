@@ -8,7 +8,7 @@ patch can be removed when we no longer care about supporting older glibc.
 
 --- a/sys/kern/uipc_usrreq.c
 +++ b/sys/kern/uipc_usrreq.c
-@@ -472,7 +472,12 @@
+@@ -474,7 +474,12 @@
  	KASSERT(unp != NULL, ("uipc_bind: unp == NULL"));
  
  	if (soun->sun_len > sizeof(struct sockaddr_un))

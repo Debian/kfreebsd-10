@@ -1,6 +1,6 @@
 --- a/sys/modules/Makefile
 +++ b/sys/modules/Makefile
-@@ -175,8 +175,6 @@
+@@ -178,8 +178,6 @@
  	jme \
  	joy \
  	kbdmux \

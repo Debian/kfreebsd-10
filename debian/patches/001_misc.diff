@@ -4,7 +4,7 @@ Co-authored by Nali Toja
 --- a/sys/conf/kern.mk
 +++ b/sys/conf/kern.mk
 @@ -1,5 +1,15 @@
- # $FreeBSD$
+ # $FreeBSD: stable/10/sys/conf/kern.mk 268882 2014-07-19 18:33:09Z dim $
  
 +FREEBSD_CC!=   ${CC} -dM -E -</dev/null | awk '/__FreeBSD_cc_version/ { print $$3 }' || true
 +
@@ -19,7 +19,7 @@ Co-authored by Nali Toja
  #
  # Warning flags for compiling the kernel and components of the kernel:
  #
-@@ -61,7 +71,7 @@
+@@ -62,7 +72,7 @@
  #
  .if ${MACHINE_CPUARCH} == "i386"
  .if ${COMPILER_TYPE} != "clang"

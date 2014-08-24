@@ -1,3 +1,40 @@
+kfreebsd-10 (10.1~svn270484-1) UNRELEASED; urgency=low
+
+  [ Steven Chamberlain ]
+  * New upstream snapshot of STABLE-10
+  * Reset abiname to 0
+  * Switch to clang-3.4 on i386, amd64, arm (Closes: #754799)
+  * Switch to gcc-4.9 on other architectures (Closes: #751316)
+  * Delete patches merged upstream:
+    - si_status_wait6.diff
+    - accept_O_CLOEXEC_in_shm_open.diff
+    - newcons.diff
+    - SA-14_05.nfsserver.patch
+    - SA-14_08.tcp.patch
+    - EN-14_05.ciss.patch
+    - EN-14_06.execve.patch
+  * Refresh patches:
+    - radeonkms_abort_nofw.diff
+    - userland.diff
+    - 001_misc.diff
+    - 902_version.diff
+    - 908_linprocfs_is_not_proc.diff
+    - 915_ip6.v6only.diff
+    - 917_disable_kgssapi.diff
+    - 918_unix_socket_overflow.diff
+    - 999_config.diff
+  * Fix FTBFS building the kernel in isolation
+    - 110_ftbfs.diff
+  * Enable IPSEC (Closes: #644353)
+    - 111_ipsec_nat-t.diff: redefine UDP_ENCAP to match GNU userland
+      (Closes: #718224)
+  * Build modules in-place instead of creating a deep nested hierarchy
+    - 924_module_objdir.diff (Closes: #757632)
+  * Compile objects with relative, not absolute paths, to avoid embedding
+    full build tree paths into modules (Closes: #757629)
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Sun, 24 Aug 2014 02:00:12 +0100
+
 kfreebsd-10 (10.0-6) unstable; urgency=high
 
   * Team upload.
