@@ -6,6 +6,7 @@ kfreebsd-10 (10.1~svn270273-1) UNRELEASED; urgency=low
   * Switch to clang-3.4 on i386, amd64, arm (Closes: #754799)
   * Switch to gcc-4.9 on other architectures (Closes: #751316)
   * Delete patches merged upstream:
+    - 001_misc.diff
     - si_status_wait6.diff
     - accept_O_CLOEXEC_in_shm_open.diff
     - newcons.diff
