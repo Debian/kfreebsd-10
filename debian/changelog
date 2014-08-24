@@ -1,4 +1,4 @@
-kfreebsd-10 (10.1~svn270484-1) UNRELEASED; urgency=low
+kfreebsd-10 (10.1~svn270273-1) UNRELEASED; urgency=low
 
   [ Steven Chamberlain ]
   * New upstream snapshot of STABLE-10
@@ -13,7 +13,6 @@ kfreebsd-10 (10.1~svn270484-1) UNRELEASED; urgency=low
     - SA-14_08.tcp.patch
     - EN-14_05.ciss.patch
     - EN-14_06.execve.patch
-    - 003_glibc_dev_aicasm.diff
   * Refresh patches:
     - radeonkms_abort_nofw.diff
     - userland.diff
