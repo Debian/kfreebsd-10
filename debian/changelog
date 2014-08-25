@@ -32,6 +32,7 @@ kfreebsd-10 (10.1~svn270273-1) UNRELEASED; urgency=low
     - 924_module_objdir.diff (Closes: #757632)
   * Compile objects with relative, not absolute paths, to avoid embedding
     full build tree paths into modules (Closes: #757629)
+  * Require freebsd-glue >= 0.2.20 due to bug #759249
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Sun, 24 Aug 2014 02:00:12 +0100
 
