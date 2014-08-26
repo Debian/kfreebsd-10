@@ -1,4 +1,10 @@
-kfreebsd-10 (10.1~svn270273-1) UNRELEASED; urgency=low
+kfreebsd-10 (10.1~svn270273-2) experimental; urgency=medium
+
+  * Remove vt_xboxfb as it's not available currently
+
+ -- Christoph Egger <christoph@debian.org>  Tue, 26 Aug 2014 13:15:35 -0700
+
+kfreebsd-10 (10.1~svn270273-1) experimental; urgency=low
 
   [ Steven Chamberlain ]
   * New upstream snapshot of STABLE-10

@@ -13,6 +13,9 @@ Build-Depends: debhelper (>= 5.0.0), bzip2, sharutils, flex-old | flex,
  libbsd-dev (>= 0.3.0), pkg-config,
  libsbuf-dev (>= 9.0+ds1-2),
  kernel-wedge (>= 2.79) [kfreebsd-any],
+# workaround for #759303
+ libc0.1-dev-i386 [kfreebsd-amd64],
+ libc0.1-dev-amd64 [kfreebsd-i386]
 Standards-Version: 3.9.2
 
 Package: kfreebsd-source-@version@
