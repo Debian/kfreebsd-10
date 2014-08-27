@@ -267,7 +267,7 @@ install-flavor-%-stamp: install-common-stamp build-flavor-%-stamp
 	mv $(IMAGE_PACKAGE)-$*/lib/modules/$(version)-$(abiname)-$*/kernel $(IMAGE_PACKAGE)-$*/boot/kfreebsd-$(version)-$(abiname)-$*
 	chmod 644 $(IMAGE_PACKAGE)-$*/boot/kfreebsd-$(version)-$(abiname)-$*
 	# Brand kernel image and modules as FreeBSD type, in case not building
-        # on kfreebsd
+	# on kfreebsd
 	find $(IMAGE_PACKAGE)-$*/lib/modules/$(version)-$(abiname)-$*/ \
 	 -name '*.ko' -exec brandelf -t FreeBSD \{\} \;
 	brandelf -t FreeBSD $(IMAGE_PACKAGE)-$*/boot/kfreebsd-$(version)-$(abiname)-$*
