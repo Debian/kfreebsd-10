@@ -179,7 +179,7 @@ src-flavor-%-stamp:
 	# full build tree paths into modules (Bug #757629)
 	find $(FLAVOR_DIR)-$*/sys/modules/ \
 	 \( -name Makefile -o -name Makefile.inc \) \
-	 -exec sed -i 's@$${.CURDIR}/@@' \{\} \;
+	 -exec sed -i 's@$${.CURDIR}/@@g' \{\} \;
 
 	touch $@
 build-flavor-%-stamp: src-flavor-%-stamp

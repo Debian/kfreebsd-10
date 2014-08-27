@@ -1,3 +1,9 @@
+kfreebsd-10 (10.1~svn270273-3) UNRELEASED; urgency=medium
+
+  * Remove some more build tree paths from the output files
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Wed, 27 Aug 2014 05:13:07 +0100
+
 kfreebsd-10 (10.1~svn270273-2) experimental; urgency=medium
 
   * Remove vt_xboxfb as it's not available currently
