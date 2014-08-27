@@ -1,6 +1,10 @@
 kfreebsd-10 (10.1~svn270273-3) UNRELEASED; urgency=medium
 
-  * Remove some more build tree paths from the output files
+  * Improve build reproducibility:
+    - remove last remaining occurrences of the full build path from the
+      output files
+    - use brandelf to give kernel modules the ELF ABI number for
+      FreeBSD, even when building on Linux
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Wed, 27 Aug 2014 05:13:07 +0100
 
