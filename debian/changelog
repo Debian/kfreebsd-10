@@ -1,12 +1,24 @@
-kfreebsd-10 (10.1~svn270273-3) UNRELEASED; urgency=medium
+kfreebsd-10 (10.1~svn271306-1) UNRELEASED; urgency=medium
 
+  [ Steven Chamberlain ]
+  * New upstream snapshot of 10.1-PRERELEASE
+    - Improves performance of vt(4) on vga (Closes: #755739)
+  * Use the new 'make firmware' target to rebuild aic7xxx firmware from
+    sources, no longer done upstream but required per the DFSG
+  * Drop obsolete patch
+    - 003_glibc_dev_aicasm.diff
+  * Refresh patches
+    - userland.diff
+    - 107_mount_update.diff
+    - 917_disable_kgssapi.diff
+    - 999_config.diff
   * Improve build reproducibility:
     - remove last remaining occurrences of the full build path from the
       output files
     - use brandelf to give kernel modules the ELF ABI number for
       FreeBSD, even when building on Linux
 
- -- Steven Chamberlain <steven@pyro.eu.org>  Wed, 27 Aug 2014 05:13:07 +0100
+ -- GNU/kFreeBSD Maintainers <debian-bsd@lists.debian.org>  Tue, 09 Sep 2014 12:52:07 +0100
 
 kfreebsd-10 (10.1~svn270273-2) experimental; urgency=medium
 

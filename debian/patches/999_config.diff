@@ -2,7 +2,7 @@
 +++ b/sys/amd64/conf/GENERIC
 @@ -18,8 +18,8 @@
  #
- # $FreeBSD: stable/10/sys/amd64/conf/GENERIC 268813 2014-07-17 22:31:46Z imp $
+ # $FreeBSD: stable/10/sys/amd64/conf/GENERIC 271234 2014-09-07 18:43:26Z markj $
  
 -cpu		HAMMER
 -ident		GENERIC
@@ -24,7 +24,7 @@
 +++ b/sys/i386/conf/GENERIC
 @@ -18,10 +18,10 @@
  #
- # $FreeBSD: stable/10/sys/i386/conf/GENERIC 268813 2014-07-17 22:31:46Z imp $
+ # $FreeBSD: stable/10/sys/i386/conf/GENERIC 271234 2014-09-07 18:43:26Z markj $
  
 -cpu		I486_CPU
 -cpu		I586_CPU

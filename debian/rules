@@ -207,6 +207,10 @@ build-flavor-%-stamp: src-flavor-%-stamp
 	cd $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/conf \
 		&& config $(configfile)
 
+	# We must rebuild firmware from sources, per the DFSG
+	CFLAGS='-D_GNU_SOURCE -isystem /usr/include/freebsd' LDFLAGS='-ldb -lbsd' \
+	 $(MAKE) CC=$(cc_cmd) -C $(FLAVOR_DIR)-$*/sys/modules/aic7xxx/ firmware
+
 	# Build it
 	$(MAKE) CC=$(cc_cmd) -C $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/compile/$(configfile)/ depend
 	$(MAKE) CC=$(cc_cmd) -C $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/compile/$(configfile)/
