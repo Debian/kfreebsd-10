@@ -1,4 +1,4 @@
-kfreebsd-10 (10.1~svn271306-1) UNRELEASED; urgency=medium
+kfreebsd-10 (10.1~svn271306-1) experimental; urgency=medium
 
   [ Steven Chamberlain ]
   * New upstream snapshot of 10.1-PRERELEASE
@@ -18,7 +18,11 @@ kfreebsd-10 (10.1~svn271306-1) UNRELEASED; urgency=medium
     - use brandelf to give kernel modules the ELF ABI number for
       FreeBSD, even when building on Linux
 
- -- GNU/kFreeBSD Maintainers <debian-bsd@lists.debian.org>  Tue, 09 Sep 2014 12:52:07 +0100
+  [ Christoph Egger ]
+  * add aicasm-parallel-build-dependencies.diff to fix parallel build of
+    aic7xx firmware
+
+ -- Christoph Egger <christoph@debian.org>  Wed, 10 Sep 2014 09:57:11 -0700
 
 kfreebsd-10 (10.1~svn270273-2) experimental; urgency=medium
 

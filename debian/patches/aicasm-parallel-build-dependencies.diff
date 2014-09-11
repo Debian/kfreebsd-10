@@ -1,0 +1,17 @@
+Index: sys/modules/aic7xxx/Makefile
+===================================================================
+--- a/sys/modules/aic7xxx/Makefile	(revision 271306)
++++ b/sys/modules/aic7xxx/Makefile	(working copy)
+@@ -8,10 +8,10 @@
+ aicasm/aicasm:
+ 	( cd ${.CURDIR}/aicasm ; ${MAKE} aicasm )
+ 
+-ahdfirmware:
++ahdfirmware: aicasm/aicasm
+ 	( cd ${.CURDIR}/ahd ; ${MAKE} ahdfirmware )
+ 
+-ahcfirmware:
++ahcfirmware: aicasm/aicasm
+ 	( cd ${.CURDIR}/ahc ; ${MAKE} ahcfirmware )
+ 
+ cleanfirmware:

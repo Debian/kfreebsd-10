@@ -34,3 +34,4 @@ firmware_load.diff
 923_newvers_timestamp.diff
 924_module_objdir.diff
 999_config.diff
+aicasm-parallel-build-dependencies.diff
