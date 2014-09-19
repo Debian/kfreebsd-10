@@ -1,3 +1,11 @@
+kfreebsd-10 (10.1~svn271306-2) experimental; urgency=medium
+
+  * build-depend on clang-3.4 (>= 1:3.4.2-9~exp2) for #759303 fixes
+  * Add myself to uploaders
+  * Wrap control fields nicely
+
+ -- Christoph Egger <christoph@debian.org>  Thu, 18 Sep 2014 17:35:14 -0700
+
 kfreebsd-10 (10.1~svn271306-1) experimental; urgency=medium
 
   [ Steven Chamberlain ]
