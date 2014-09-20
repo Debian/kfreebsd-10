@@ -1,3 +1,10 @@
+kfreebsd-10 (10.1~svn271306-3) UNRELEASED; urgency=medium
+
+  [ Steven Chamberlain ]
+  * Set a Breaks: on freebsd-smbfs (<< 10.1~) due to an ABI change
+
+ -- GNU/kFreeBSD Maintainers <debian-bsd@lists.debian.org>  Sat, 20 Sep 2014 22:02:28 +0100
+
 kfreebsd-10 (10.1~svn271306-2) experimental; urgency=medium
 
   * build-depend on clang-3.4 (>= 1:3.4.2-9~exp2) for #759303 fixes
