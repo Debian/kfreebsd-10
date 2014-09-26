@@ -2,8 +2,12 @@ kfreebsd-10 (10.1~svn272167-1) UNRELEASED; urgency=medium
 
   [ Steven Chamberlain ]
   * New upstream snapshot of 10.1-BETA3
-  * Set a Breaks: on freebsd-smbfs (<< 10.1~) due to an ABI change
-  * Set a Breaks: on pf (<< 10.1~) due to an ABI change
+  * Set a Breaks: on freebsd-net-tools (<< 10.0~) due to an ABI change
+    listing or modifying network interfaces
+  * Set a Breaks: on freebsd-smbfs (<< 10.0~) due to an ABI change
+    mounting an SMB filesystem
+  * Set a Breaks: on pf (<< 10.1~) due to an ABI change listing or
+    modifying firewall rules
 
  -- GNU/kFreeBSD Maintainers <debian-bsd@lists.debian.org>  Sat, 20 Sep 2014 22:02:28 +0100
 
