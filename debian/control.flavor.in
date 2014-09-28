@@ -7,8 +7,8 @@ Depends: ${misc:Depends},
  kbdcontrol (>= 8.2+ds2-6) [kfreebsd-any],
 Conflicts: kfreebsd-loader (<< 5.4-1.3)
 Breaks:
-# Prior versions can't boot kFreeBSD >= 9.1 (see #699002)
- grub-common (<< 1.99-27+deb7u2) [kfreebsd-any],
+# ZFS metadata now compressed with LZ4 by default;  requires recent GRUB
+ grub-common (<< 2.02~) [kfreebsd-any],
 # AT_* macros break LD_PRELOAD (see #630695)
 # Missing support for RFTSIGZMB (see 007_clone_signals.diff)
  libc0.1 (<< 2.11.3-1) [kfreebsd-any],

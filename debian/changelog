@@ -8,6 +8,9 @@ kfreebsd-10 (10.1~svn272167-1) UNRELEASED; urgency=medium
     mounting an SMB filesystem
   * Set a Breaks: on pf (<< 10.1~) due to an ABI change listing or
     modifying firewall rules
+  * Set a Breaks: on grub-common (<< 2.02~) because GRUB 2.02 or later
+    is needed to boot from a ZFS pool having the LZ4 compression
+    feature enabled
 
  -- GNU/kFreeBSD Maintainers <debian-bsd@lists.debian.org>  Sat, 20 Sep 2014 22:02:28 +0100
 
