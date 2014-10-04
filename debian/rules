@@ -93,7 +93,7 @@ MAKE += -DWITHOUT_SSP
 
 get-orig-source:
 	rm -rf $(ORIG_DIR)
-	svn export -r $(svn_revision) $(SVN)/sys $(ORIG_DIR)/sys
+	svn export --ignore-keywords -r $(svn_revision) $(SVN)/sys $(ORIG_DIR)/sys
 	cd $(ORIG_DIR) && $(CURDIR)/debian/prune.sh
 	tar --numeric-owner --owner 0 --group 0 -cJf ../$(ORIG_TAR) $(ORIG_DIR)
 	rm -rf $(ORIG_DIR)
