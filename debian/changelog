@@ -1,4 +1,4 @@
-kfreebsd-10 (10.1~svn272463-1) UNRELEASED; urgency=medium
+kfreebsd-10 (10.1~svn272463-1) unstable; urgency=low
 
   [ Steven Chamberlain ]
   * New upstream snapshot of 10.1-RC1
@@ -13,6 +13,7 @@ kfreebsd-10 (10.1~svn272463-1) UNRELEASED; urgency=medium
     feature enabled
   * In get-orig-source, svn export with --ignore-keywords so that
     revision tags do not fuzzy the patches
+  * Add myself to Uploaders
 
   [ Petr Salinger ]
   * Refresh patches
@@ -21,7 +22,10 @@ kfreebsd-10 (10.1~svn272463-1) UNRELEASED; urgency=medium
     - 001_misc.diff
     - 999_config.diff
 
- -- GNU/kFreeBSD Maintainers <debian-bsd@lists.debian.org>  Sat, 20 Sep 2014 22:02:28 +0100
+  [ Christoph Egger ]
+  * Upload to unstable
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Sat, 20 Sep 2014 22:02:28 +0100
 
 kfreebsd-10 (10.1~svn271306-2) experimental; urgency=medium
 

@@ -5,7 +5,8 @@ Maintainer: GNU/kFreeBSD Maintainers <debian-bsd@lists.debian.org>
 Uploaders:
  Aurelien Jarno <aurel32@debian.org>,
  Robert Millan <rmh@debian.org>,
- Christoph Egger <christoph@debian.org>
+ Christoph Egger <christoph@debian.org>,
+ Steven Chamberlain <steven@pyro.eu.org>,
 Vcs-Browser: http://anonscm.debian.org/viewvc/glibc-bsd/trunk/kfreebsd-@major@/
 Vcs-Svn: svn://anonscm.debian.org/glibc-bsd/trunk/kfreebsd-@major@/
 Build-Depends:
