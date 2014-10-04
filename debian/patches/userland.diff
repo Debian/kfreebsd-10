@@ -418,7 +418,7 @@ Staging area for fixes needed by userland.
 --- a/sys/sys/queue.h
 +++ b/sys/sys/queue.h
 @@ -30,8 +30,12 @@
-  * $FreeBSD: stable/10/sys/sys/queue.h 251887 2013-06-18 02:57:56Z lstewart $
+  * $FreeBSD$
   */
  
 -#ifndef _SYS_QUEUE_H_

@@ -4,7 +4,7 @@ Co-authored by Nali Toja
 --- a/sys/conf/kern.mk
 +++ b/sys/conf/kern.mk
 @@ -1,5 +1,8 @@
- # $FreeBSD: stable/10/sys/conf/kern.mk 268882 2014-07-19 18:33:09Z dim $
+ # $FreeBSD$
  
 +# Debian compilers do not have this FreeBSD-specific compiler extension
 +MK_FORMAT_EXTENSIONS=no

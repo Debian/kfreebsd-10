@@ -1,7 +1,7 @@
-kfreebsd-10 (10.1~svn272167-1) UNRELEASED; urgency=medium
+kfreebsd-10 (10.1~svn272500-1) UNRELEASED; urgency=medium
 
   [ Steven Chamberlain ]
-  * New upstream snapshot of 10.1-BETA3
+  * New upstream snapshot of 10.1 releng branch
   * Set a Breaks: on freebsd-net-tools (<< 10.0~) due to an ABI change
     listing or modifying network interfaces
   * Set a Breaks: on freebsd-smbfs (<< 10.0~) due to an ABI change

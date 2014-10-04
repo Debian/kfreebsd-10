@@ -1,7 +1,5 @@
-Index: sys/modules/aic7xxx/Makefile
-===================================================================
---- a/sys/modules/aic7xxx/Makefile	(revision 271306)
-+++ b/sys/modules/aic7xxx/Makefile	(working copy)
+--- a/sys/modules/aic7xxx/Makefile
++++ b/sys/modules/aic7xxx/Makefile
 @@ -8,10 +8,10 @@
  aicasm/aicasm:
  	( cd ${.CURDIR}/aicasm ; ${MAKE} aicasm )
