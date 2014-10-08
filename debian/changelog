@@ -1,3 +1,14 @@
+kfreebsd-10 (10.1~svn272463-2) UNRELEASED; urgency=medium
+
+  * Actually apply changes to debian/control meant to happen in the
+    previous upload (changes to Breaks: and Uploaders:)
+  * Don't yet set a Breaks: on grub-common (<< 2.02~), because newer
+    GRUB is not available yet in testing, and would make d-i unable to
+    install a bootloader at all.  Please add it back after GRUB 2.02
+    migrates as it will help to smooth partial upgrades.
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Thu, 09 Oct 2014 00:31:20 +0100
+
 kfreebsd-10 (10.1~svn272463-1) unstable; urgency=low
 
   [ Steven Chamberlain ]
