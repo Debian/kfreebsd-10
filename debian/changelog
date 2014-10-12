@@ -1,3 +1,121 @@
+kfreebsd-10 (10.1~svn272463-2) UNRELEASED; urgency=medium
+
+  * Actually apply changes to debian/control meant to happen in the
+    previous upload (changes to Breaks: and Uploaders:)
+  * Don't yet set a Breaks: on grub-common (<< 2.02~), because newer
+    GRUB is not available yet in testing, and would make d-i unable to
+    install a bootloader at all.  Please add it back after GRUB 2.02
+    migrates as it will help to smooth partial upgrades.
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Thu, 09 Oct 2014 00:31:20 +0100
+
+kfreebsd-10 (10.1~svn272463-1) unstable; urgency=low
+
+  [ Steven Chamberlain ]
+  * New upstream snapshot of 10.1-RC1
+  * Set a Breaks: on freebsd-net-tools (<< 10.0~) due to an ABI change
+    listing or modifying network interfaces
+  * Set a Breaks: on freebsd-smbfs (<< 10.0~) due to an ABI change
+    mounting an SMB filesystem
+  * Set a Breaks: on pf (<< 10.1~) due to an ABI change listing or
+    modifying firewall rules
+  * Set a Breaks: on grub-common (<< 2.02~) because GRUB 2.02 or later
+    is needed to boot from a ZFS pool having the LZ4 compression
+    feature enabled
+  * In get-orig-source, svn export with --ignore-keywords so that
+    revision tags do not fuzzy the patches
+  * Add myself to Uploaders
+
+  [ Petr Salinger ]
+  * Refresh patches
+    - aicasm-parallel-build-dependencies.diff
+    - userland.diff
+    - 001_misc.diff
+    - 999_config.diff
+
+  [ Christoph Egger ]
+  * Upload to unstable
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Sat, 20 Sep 2014 22:02:28 +0100
+
+kfreebsd-10 (10.1~svn271306-2) experimental; urgency=medium
+
+  * build-depend on clang-3.4 (>= 1:3.4.2-9~exp2) for #759303 fixes
+  * Add myself to uploaders
+  * Wrap control fields nicely
+
+ -- Christoph Egger <christoph@debian.org>  Thu, 18 Sep 2014 17:35:14 -0700
+
+kfreebsd-10 (10.1~svn271306-1) experimental; urgency=medium
+
+  [ Steven Chamberlain ]
+  * New upstream snapshot of 10.1-PRERELEASE
+    - Improves performance of vt(4) on vga (Closes: #755739)
+  * Use the new 'make firmware' target to rebuild aic7xxx firmware from
+    sources, no longer done upstream but required per the DFSG
+  * Drop obsolete patch
+    - 003_glibc_dev_aicasm.diff
+  * Refresh patches
+    - userland.diff
+    - 107_mount_update.diff
+    - 917_disable_kgssapi.diff
+    - 999_config.diff
+  * Improve build reproducibility:
+    - remove last remaining occurrences of the full build path from the
+      output files
+    - use brandelf to give kernel modules the ELF ABI number for
+      FreeBSD, even when building on Linux
+
+  [ Christoph Egger ]
+  * add aicasm-parallel-build-dependencies.diff to fix parallel build of
+    aic7xx firmware
+
+ -- Christoph Egger <christoph@debian.org>  Wed, 10 Sep 2014 09:57:11 -0700
+
+kfreebsd-10 (10.1~svn270273-2) experimental; urgency=medium
+
+  * Remove vt_xboxfb as it's not available currently
+
+ -- Christoph Egger <christoph@debian.org>  Tue, 26 Aug 2014 13:15:35 -0700
+
+kfreebsd-10 (10.1~svn270273-1) experimental; urgency=low
+
+  [ Steven Chamberlain ]
+  * New upstream snapshot of STABLE-10
+  * Reset abiname to 0
+  * Switch to clang-3.4 on i386, amd64, arm (Closes: #754799)
+  * Switch to gcc-4.9 on other architectures (Closes: #751316)
+  * Delete patches merged upstream:
+    - si_status_wait6.diff
+    - accept_O_CLOEXEC_in_shm_open.diff
+    - newcons.diff
+    - SA-14_05.nfsserver.patch
+    - SA-14_08.tcp.patch
+    - EN-14_05.ciss.patch
+    - EN-14_06.execve.patch
+  * Refresh patches:
+    - radeonkms_abort_nofw.diff
+    - userland.diff
+    - 001_misc.diff
+    - 902_version.diff
+    - 908_linprocfs_is_not_proc.diff
+    - 915_ip6.v6only.diff
+    - 917_disable_kgssapi.diff
+    - 918_unix_socket_overflow.diff
+    - 999_config.diff
+  * Fix FTBFS building the kernel in isolation
+    - 110_ftbfs.diff
+  * Enable IPSEC (Closes: #644353)
+    - 111_ipsec_nat-t.diff: redefine UDP_ENCAP to match GNU userland
+      (Closes: #718224)
+  * Build modules in-place instead of creating a deep nested hierarchy
+    - 924_module_objdir.diff (Closes: #757632)
+  * Compile objects with relative, not absolute paths, to avoid embedding
+    full build tree paths into modules (Closes: #757629)
+  * Require freebsd-glue >= 0.2.20 due to bug #759249
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Sun, 24 Aug 2014 02:00:12 +0100
+
 kfreebsd-10 (10.0-6) unstable; urgency=high
 
   * Team upload.

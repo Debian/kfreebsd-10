@@ -21,7 +21,7 @@ cpu		:= $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU)
 config_files	:= $(wildcard debian/arch/$(cpu)/*.config)
 flavours	:= $(config_files:debian/arch/$(cpu)/%.config=%)
 configfile	:= DEBCUSTOM
-abiname		:= 1
+abiname		:= 0
 ld_target	:= $(shell ld --help | sed -ne "s/[^ :]*: supported targets: \([^ ]*\) .*/\1/p")
 
 ifeq ($(cpu), mipsel)
@@ -30,8 +30,8 @@ else
 kfreebsd_cpu	:= $(cpu)
 endif
 
-SVN		:= https://svn0.us-west.freebsd.org/base/release/$(version).0
-#SVN		:= https://svn0.us-west.freebsd.org/base/releng/$(version)
+#SVN		:= https://svn0.us-west.freebsd.org/base/release/$(version).0
+SVN		:= https://svn0.us-west.freebsd.org/base/releng/$(version)
 #SVN		:= https://svn0.us-west.freebsd.org/base/stable/$(major)
 #SVN		:= https://svn0.us-west.freebsd.org/base/head
 SOURCE_PACKAGE	:= $(CURDIR)/debian/kfreebsd-source-$(version)
@@ -61,13 +61,13 @@ MAKE		:= \
 # Clang is the default compiler on these architectures (see src/share/mk/bsd.own.mk)
 clang_cpus	:= i386 amd64 arm
 
-cc_pkg		:= clang-3.3 (>= 1:3.3-9) [$(foreach cpu,$(clang_cpus),any-$(cpu))], \
-		gcc-4.8 [$(foreach cpu,$(clang_cpus),!any-$(cpu))]
+cc_pkg		:= clang-3.4 (>= 1:3.4.2-9~exp2) [$(foreach cpu,$(clang_cpus),any-$(cpu))], \
+		gcc-4.9 [$(foreach cpu,$(clang_cpus),!any-$(cpu))]
 
 ifneq (, $(filter $(clang_cpus), $(DEB_HOST_ARCH_CPU)))
-cc_cmd		:= clang
+cc_cmd		:= clang-3.4
 else
-cc_cmd		:= gcc-4.8
+cc_cmd		:= gcc-4.9
 endif
 
 ifeq ($(cc_cmd), clang)
@@ -93,7 +93,7 @@ MAKE += -DWITHOUT_SSP
 
 get-orig-source:
 	rm -rf $(ORIG_DIR)
-	svn export -r $(svn_revision) $(SVN)/sys $(ORIG_DIR)/sys
+	svn export --ignore-keywords -r $(svn_revision) $(SVN)/sys $(ORIG_DIR)/sys
 	cd $(ORIG_DIR) && $(CURDIR)/debian/prune.sh
 	tar --numeric-owner --owner 0 --group 0 -cJf ../$(ORIG_TAR) $(ORIG_DIR)
 	rm -rf $(ORIG_DIR)
@@ -174,6 +174,13 @@ build-arch: $(foreach flavor,$(flavours),build-flavor-$(flavor)-stamp)
 src-flavor-%-stamp:
 	mkdir -p $(FLAVOR_DIR)-$*
 	cp -af sys $(FLAVOR_DIR)-$*/
+
+	# Compile objects with relative, not absolute paths, to avoid embedding
+	# full build tree paths into modules (Bug #757629)
+	find $(FLAVOR_DIR)-$*/sys/modules/ \
+	 \( -name Makefile -o -name Makefile.inc \) \
+	 -exec sed -i 's@$${.CURDIR}/@@g' \{\} \;
+
 	touch $@
 build-flavor-%-stamp: src-flavor-%-stamp
 	# Add the abiname and the flavor to the kernel version
@@ -199,6 +206,10 @@ build-flavor-%-stamp: src-flavor-%-stamp
 	ln -sf $*.config $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/conf/$(configfile)
 	cd $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/conf \
 		&& config $(configfile)
+
+	# We must rebuild firmware from sources, per the DFSG
+	CFLAGS='-D_GNU_SOURCE -isystem /usr/include/freebsd' LDFLAGS='-ldb -lbsd' \
+	 $(MAKE) CC=$(cc_cmd) -C $(FLAVOR_DIR)-$*/sys/modules/aic7xxx/ firmware
 
 	# Build it
 	$(MAKE) CC=$(cc_cmd) -C $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/compile/$(configfile)/ depend
@@ -259,7 +270,10 @@ install-flavor-%-stamp: install-common-stamp build-flavor-%-stamp
 	$(MAKE) CC=$(cc_cmd) -C $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/compile/$(configfile) DESTDIR=$(IMAGE_PACKAGE)-$* install
 	mv $(IMAGE_PACKAGE)-$*/lib/modules/$(version)-$(abiname)-$*/kernel $(IMAGE_PACKAGE)-$*/boot/kfreebsd-$(version)-$(abiname)-$*
 	chmod 644 $(IMAGE_PACKAGE)-$*/boot/kfreebsd-$(version)-$(abiname)-$*
-	# Brand kernel image as FreeBSD type, in case not building on kfreebsd
+	# Brand kernel image and modules as FreeBSD type, in case not building
+	# on kfreebsd
+	find $(IMAGE_PACKAGE)-$*/lib/modules/$(version)-$(abiname)-$*/ \
+	 -name '*.ko' -exec brandelf -t FreeBSD \{\} \;
 	brandelf -t FreeBSD $(IMAGE_PACKAGE)-$*/boot/kfreebsd-$(version)-$(abiname)-$*
 	gzip -9 -n $(IMAGE_PACKAGE)-$*/boot/kfreebsd-$(version)-$(abiname)-$*
 

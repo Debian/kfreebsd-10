@@ -1,12 +1,5 @@
 # Patches from (or merged in) upstream
-si_status_wait6.diff
-accept_O_CLOEXEC_in_shm_open.diff
 radeonkms_abort_nofw.diff
-newcons.diff
-SA-14_05.nfsserver.patch
-SA-14_08.tcp.patch
-EN-14_05.ciss.patch
-EN-14_06.execve.patch
 
 # Patches that are in good shape for merging upstream
 mount_remount.diff
@@ -15,12 +8,13 @@ mount_remount.diff
 userland.diff
 001_misc.diff
 002_maxpathlen.diff
-003_glibc_dev_aicasm.diff
 004_xargs.diff
 #007_clone_signals.diff
 #009_disable_duped_modules.diff
 107_mount_update.diff
 109_linprocfs_non_x86.diff
+110_ftbfs.diff
+111_ipsec_nat-t.diff
 
 # Patches that are likely to be Debian-specific
 firmware_load.diff
@@ -38,4 +32,6 @@ firmware_load.diff
 921_signal_watchdog.diff
 922_cc_version.diff
 923_newvers_timestamp.diff
+924_module_objdir.diff
 999_config.diff
+aicasm-parallel-build-dependencies.diff

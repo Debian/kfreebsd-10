@@ -1,0 +1,11 @@
+--- a/sys/conf/kern.pre.mk
++++ b/sys/conf/kern.pre.mk
+@@ -182,7 +182,7 @@
+ # MKMODULESENV is set here so that port makefiles can augment
+ # them.
+ 
+-MKMODULESENV+=	MAKEOBJDIRPREFIX=${.OBJDIR}/modules KMODDIR=${KODIR}
++MKMODULESENV+=	MAKEOBJDIRPREFIX=/ KMODDIR=${KODIR}
+ MKMODULESENV+=	MACHINE_CPUARCH=${MACHINE_CPUARCH}
+ .if (${KERN_IDENT} == LINT)
+ MKMODULESENV+=	ALL_MODULES=LINT

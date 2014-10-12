@@ -3,8 +3,8 @@ Merged (rev 261497).
 
 --- a/sys/dev/drm2/radeon/r600.c
 +++ b/sys/dev/drm2/radeon/r600.c
-@@ -3012,6 +3012,12 @@
- 		rdev->accel_working = false;
+@@ -3018,6 +3018,12 @@
+ 		return -EINVAL;
  	}
  
 +	/* Don't start up if the ucode is missing. */
@@ -18,8 +18,8 @@ Merged (rev 261497).
  
 --- a/sys/dev/drm2/radeon/rv770.c
 +++ b/sys/dev/drm2/radeon/rv770.c
-@@ -1186,6 +1186,12 @@
- 		rdev->accel_working = false;
+@@ -1192,6 +1192,12 @@
+ 		return -EINVAL;
  	}
  
 +	/* Don't start up if the ucode is missing. */

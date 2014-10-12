@@ -48,7 +48,7 @@
  options 	SYSVSHM			# SYSV-style shared memory
 --- /dev/null
 +++ b/sys/conf/DEBIAN
-@@ -0,0 +1,40 @@
+@@ -0,0 +1,52 @@
 +# Common options to all Debian GNU/kFreeBSD kernels
 +
 +options		LINPROCFS
@@ -89,6 +89,18 @@
 +
 +# Disable binary blobs
 +include		WITHOUT_SOURCELESS
++
++# In order to enable IPSEC you MUST also add device crypto to
++# your kernel configuration
++device          crypto          # core crypto support
++
++options         IPSEC                   #IP security (requires device crypto)
++#options        IPSEC_DEBUG             #debug for IP security
++#
++# Set IPSEC_NAT_T to enable NAT-Traversal support.  This enables
++# optional UDP encapsulation of ESP packets.
++#
++options         IPSEC_NAT_T             #NAT-T support, UDP encap of ESP
 --- /dev/null
 +++ b/sys/conf/DEBIAN_DEBUG
 @@ -0,0 +1,22 @@

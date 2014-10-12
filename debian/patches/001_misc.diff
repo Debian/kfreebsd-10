@@ -3,28 +3,21 @@ Co-authored by Nali Toja
 
 --- a/sys/conf/kern.mk
 +++ b/sys/conf/kern.mk
-@@ -1,5 +1,15 @@
+@@ -1,5 +1,8 @@
  # $FreeBSD$
  
-+FREEBSD_CC!=   ${CC} -dM -E -</dev/null | awk '/__FreeBSD_cc_version/ { print $$3 }' || true
-+
-+.if ${FREEBSD_CC}
-+# FreeBSD extensions
-+format_extensions=     -fformat-extensions
-+no_align_long_strings= -mno-align-long-strings
-+.else
++# Debian compilers do not have this FreeBSD-specific compiler extension
 +MK_FORMAT_EXTENSIONS=no
-+.endif
 +
  #
  # Warning flags for compiling the kernel and components of the kernel:
  #
-@@ -61,7 +71,7 @@
+@@ -62,7 +65,7 @@
  #
  .if ${MACHINE_CPUARCH} == "i386"
  .if ${COMPILER_TYPE} != "clang"
 -CFLAGS+=	-mno-align-long-strings -mpreferred-stack-boundary=2
-+CFLAGS+=	${no_align_long_strings} -mpreferred-stack-boundary=2
++CFLAGS+=	${no-align-long-strings} -mpreferred-stack-boundary=2
  .else
  CFLAGS+=	-mno-aes -mno-avx
  .endif
