@@ -8,8 +8,7 @@ Depends: ${misc:Depends},
 Conflicts: kfreebsd-loader (<< 5.4-1.3)
 Breaks:
 # ZFS metadata now compressed with LZ4 by default;  requires recent GRUB
-# :XXX: please uncomment the following after GRUB 2.02 reaches testing
-# grub-common (<< 2.02~) [kfreebsd-any],
+grub-common (<< 2.02~) [kfreebsd-any],
 # AT_* macros break LD_PRELOAD (see #630695)
 # Missing support for RFTSIGZMB (see 007_clone_signals.diff)
  libc0.1 (<< 2.11.3-1) [kfreebsd-any],
