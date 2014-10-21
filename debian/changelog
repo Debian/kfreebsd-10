@@ -1,6 +1,6 @@
-kfreebsd-10 (10.1~svn273414-1) UNRELEASED; urgency=high
+kfreebsd-10 (10.1~svn273437-1) UNRELEASED; urgency=high
 
-  * New upstream snapshot of 10.1-RC3~
+  * New upstream snapshot of 10.1-RC3
     - Fix memory leak in sandboxed namei lookup. [SA-14:22]
       (CVE-2014-3711) (Closes: #766278)
 
