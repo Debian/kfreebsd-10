@@ -288,6 +288,9 @@ ifeq ($(DEB_HOST_ARCH_OS), kfreebsd)
 # FIXME: We're not ready yet. We need to decide what to do about the regressions (e.g. #732692)
 	rm -f $(IMAGE_PACKAGE)-$*/lib/modules/$(version)-$(abiname)-$*/linker.hints
 endif
+	# Symlink to drm2.ko as provider of drmn.ko dependency, for *kms
+	# modules (#731182)
+	ln -sf drm2.ko $(IMAGE_PACKAGE)-$*/lib/modules/$(version)-$(abiname)-$*/drmn.ko
 
 	# remove loader.conf (part of kfreebsd-loader)
 	rm -f $(IMAGE_PACKAGE)-$*/boot/loader.conf
