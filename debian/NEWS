@@ -1,0 +1,15 @@
+kfreebsd-10 (10.1~svn273437-1) unstable; urgency=high
+
+  If upgrading to kfreebsd 10.1 from wheezy, certain userland tools
+  should also be upgraded and the system rebooted so that their versions
+  are in sync with the running kernel.  Known to be affected are:
+
+  * freebsd-net-tools:
+    - netstat output may be incomplete
+    - ifconfig may be unable to (re)configure network interfaces
+  * freebsd-smbfs: mount_smbfs may be unable to mount new filesystems
+  * pf:  pfctl may be unable to modify firewall configuration
+
+  but all should work fine after rebooting into the new kernel.
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Thu, 23 Oct 2014 01:00:00 +0100

@@ -5,6 +5,8 @@ kfreebsd-10 (10.1~svn273437-1) UNRELEASED; urgency=high
       (CVE-2014-3711) (Closes: #766278)
   * Symlink to drm2.ko as provider of drmn.ko dependency, for *kms
     modules (Closes: #731182)
+  * NEWS: advise to reboot after upgrading kernel and userland tools
+    from wheezy (Closes: #765588)
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Tue, 21 Oct 2014 22:03:15 +0100
 
