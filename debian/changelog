@@ -1,4 +1,4 @@
-kfreebsd-10 (10.1~svn273581-1) unstable; urgency=high
+kfreebsd-10 (10.1~svn273581-1) UNSTABLE; urgency=high
 
   * New upstream snapshot of 10.1-RC3+
     - Fix memory leak in sandboxed namei lookup. [SA-14:22]
