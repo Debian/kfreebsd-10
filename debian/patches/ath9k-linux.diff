@@ -4,7 +4,7 @@ Subject: import Linux drivers/net/wireless/ath/ath9k/reg.h and modify
 
 --- /dev/null
 +++ b/sys/contrib/dev/ath/ath_hal/ar9300/ar9300_devid.h
-@@ -0,0 +1,77 @@
+@@ -0,0 +1,79 @@
 +/*
 + * Copyright (c) 2008-2011 Atheros Communications Inc.
 + *
@@ -65,8 +65,10 @@ Subject: import Linux drivers/net/wireless/ath/ath9k/reg.h and modify
 +#define AR_SREV_REVISION_AR9340_11	1
 +#define AR_SREV_REVISION_AR9340_12	2
 +#define AR_SREV_REVISION_AR9340_13	3
++#define AR_SREV_VERSION_AR9380		0x1C0
 +#define AR_SREV_VERSION_AR9580		0x1C0
 +#define AR_SREV_REVISION_AR9580_10	4 /* AR9580 1.0 */
++#define AR_SREV_VERSION_AR9460		0x280
 +#define AR_SREV_VERSION_AR9462		0x280
 +#define AR_SREV_REVISION_AR9462_20	2
 +#define AR_SREV_REVISION_AR9462_21	3
@@ -84,7 +86,7 @@ Subject: import Linux drivers/net/wireless/ath/ath9k/reg.h and modify
 +#endif
 --- /dev/null
 +++ b/sys/dev/ath/ath_hal/ar9003/ar9300_devid.h
-@@ -0,0 +1,77 @@
+@@ -0,0 +1,79 @@
 +/*
 + * Copyright (c) 2008-2011 Atheros Communications Inc.
 + *
@@ -145,8 +147,10 @@ Subject: import Linux drivers/net/wireless/ath/ath9k/reg.h and modify
 +#define AR_SREV_REVISION_AR9340_11	1
 +#define AR_SREV_REVISION_AR9340_12	2
 +#define AR_SREV_REVISION_AR9340_13	3
++#define AR_SREV_VERSION_AR9380		0x1C0
 +#define AR_SREV_VERSION_AR9580		0x1C0
 +#define AR_SREV_REVISION_AR9580_10	4 /* AR9580 1.0 */
++#define AR_SREV_VERSION_AR9460		0x280
 +#define AR_SREV_VERSION_AR9462		0x280
 +#define AR_SREV_REVISION_AR9462_20	2
 +#define AR_SREV_REVISION_AR9462_21	3
