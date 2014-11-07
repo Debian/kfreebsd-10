@@ -4,6 +4,8 @@ kfreebsd-10 (10.1~svn274115-1) UNRELEASED; urgency=medium
   * New upstream snapshot of 10.1-RC4+
     - Fix kernel stack disclosure in setlogin(2) / getlogin(2). [SA-14:25]
       (CVE-2014-8476) (Closes: #768108)
+  * Replace non-DFSG-free ar9300_devid.h with a 3-clause BSD substitute
+    derived from Linux ath9k driver (Closes: #767583)
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Thu, 30 Oct 2014 22:27:51 +0000
 

@@ -33,3 +33,5 @@ rm -vf sys/dev/ispfw/asm_*.h
 rm -vf sys/dev/advansys/adwmcode.c
 rm -vf sys/dev/ce/tau32-ddk.c
 rm -vf sys/dev/cp/cpddk.c
+rm -vf sys/dev/ath/ath_hal/ar9003/ar9300_devid.h
+rm -vf sys/contrib/dev/ath/ath_hal/ar9300/ar9300_devid.h
