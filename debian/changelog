@@ -1,7 +1,9 @@
-kfreebsd-10 (10.1~svn273874-1) UNRELEASED; urgency=medium
+kfreebsd-10 (10.1~svn274115-1) UNRELEASED; urgency=medium
 
   * Upload to unstable
-  * New upstream snapshot of 10.1-RC4
+  * New upstream snapshot of 10.1-RC4+
+    - Fix kernel stack disclosure in setlogin(2) / getlogin(2). [SA-14:25]
+      (CVE-2014-8476) (Closes: #768108)
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Thu, 30 Oct 2014 22:27:51 +0000
 
