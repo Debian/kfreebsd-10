@@ -6,6 +6,9 @@ kfreebsd-10 (10.1~svn274115-1) UNRELEASED; urgency=medium
       (CVE-2014-8476) (Closes: #768108)
   * Replace non-DFSG-free ar9300_devid.h with a 3-clause BSD substitute
     derived from Linux ath9k driver (Closes: #767583)
+  * Build kernel images only on kfreebsd-any arches, so that any
+    security or other RC-severity kernel bugs will not affect the
+    official jessie release
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Thu, 30 Oct 2014 22:27:51 +0000
 
