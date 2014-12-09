@@ -1,4 +1,4 @@
-kfreebsd-10 (10.1~svn273874-1) unstable; urgency=high
+kfreebsd-10 (10.1~svn273581-1) experimental; urgency=high
 
   If upgrading to kfreebsd 10.1 from wheezy, certain userland tools
   should also be upgraded and the system rebooted so that their versions
