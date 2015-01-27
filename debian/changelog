@@ -1,5 +1,6 @@
-kfreebsd-10 (10.1~svn274115-1) UNRELEASED; urgency=medium
+kfreebsd-10 (10.1~svn274115-1) unstable; urgency=medium
 
+  [ Steven Chamberlain ]
   * New upstream snapshot of 10.1-RC4+
     - Fix kernel stack disclosure in setlogin(2) / getlogin(2). [SA-14:25]
       (CVE-2014-8476) (Closes: #768108)
@@ -9,7 +10,10 @@ kfreebsd-10 (10.1~svn274115-1) UNRELEASED; urgency=medium
     security or other RC-severity kernel bugs will not affect the
     official jessie release
 
- -- Steven Chamberlain <steven@pyro.eu.org>  Tue, 09 Dec 2014 02:12:56 +0000
+  [ Christoph Egger ]
+  * Upload to unstable
+
+ -- Christoph Egger <christoph@debian.org>  Sun, 28 Dec 2014 12:41:02 +0100
 
 kfreebsd-10 (10.1~svn273874-1) unstable; urgency=medium
 
