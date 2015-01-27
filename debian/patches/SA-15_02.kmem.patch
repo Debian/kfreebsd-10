@@ -1,0 +1,51 @@
+Description:
+ Fix SCTP SCTP_SS_VALUE kernel memory corruption and
+ disclosure vulnerability [SA-15:02] (CVE-2014-8612)
+Origin: vendor, https://security.FreeBSD.org/patches/SA-15:02/sctp.patch
+Bug: https://security.FreeBSD.org/advisories/FreeBSD-SA-15:02.kmem.asc
+Bug-Debian: https://bugs.debian.org/776415
+Applied-Upstream: https://svnweb.freebsd.org/base?view=revision&revision=277808
+
+--- a/sys/netinet/sctp_usrreq.c
++++ b/sys/netinet/sctp_usrreq.c
+@@ -1854,8 +1854,9 @@
+ 			SCTP_CHECK_AND_CAST(av, optval, struct sctp_stream_value, *optsize);
+ 			SCTP_FIND_STCB(inp, stcb, av->assoc_id);
+ 			if (stcb) {
+-				if (stcb->asoc.ss_functions.sctp_ss_get_value(stcb, &stcb->asoc, &stcb->asoc.strmout[av->stream_id],
+-				    &av->stream_value) < 0) {
++				if ((av->stream_id >= stcb->asoc.streamoutcnt) ||
++				    (stcb->asoc.ss_functions.sctp_ss_get_value(stcb, &stcb->asoc, &stcb->asoc.strmout[av->stream_id],
++				    &av->stream_value) < 0)) {
+ 					SCTP_LTRACE_ERR_RET(inp, NULL, NULL, SCTP_FROM_SCTP_USRREQ, EINVAL);
+ 					error = EINVAL;
+ 				} else {
+@@ -3915,8 +3916,9 @@
+ 			SCTP_CHECK_AND_CAST(av, optval, struct sctp_stream_value, optsize);
+ 			SCTP_FIND_STCB(inp, stcb, av->assoc_id);
+ 			if (stcb) {
+-				if (stcb->asoc.ss_functions.sctp_ss_set_value(stcb, &stcb->asoc, &stcb->asoc.strmout[av->stream_id],
+-				    av->stream_value) < 0) {
++				if ((av->stream_id >= stcb->asoc.streamoutcnt) ||
++				    (stcb->asoc.ss_functions.sctp_ss_set_value(stcb, &stcb->asoc, &stcb->asoc.strmout[av->stream_id],
++				    av->stream_value) < 0)) {
+ 					SCTP_LTRACE_ERR_RET(inp, NULL, NULL, SCTP_FROM_SCTP_USRREQ, EINVAL);
+ 					error = EINVAL;
+ 				}
+@@ -3926,10 +3928,12 @@
+ 					SCTP_INP_RLOCK(inp);
+ 					LIST_FOREACH(stcb, &inp->sctp_asoc_list, sctp_tcblist) {
+ 						SCTP_TCB_LOCK(stcb);
+-						stcb->asoc.ss_functions.sctp_ss_set_value(stcb,
+-						    &stcb->asoc,
+-						    &stcb->asoc.strmout[av->stream_id],
+-						    av->stream_value);
++						if (av->stream_id < stcb->asoc.streamoutcnt) {
++							stcb->asoc.ss_functions.sctp_ss_set_value(stcb,
++							    &stcb->asoc,
++							    &stcb->asoc.strmout[av->stream_id],
++							    av->stream_value);
++						}
+ 						SCTP_TCB_UNLOCK(stcb);
+ 					}
+ 					SCTP_INP_RUNLOCK(inp);

@@ -1,5 +1,10 @@
 kfreebsd-10 (10.1~svn274115-2) UNRELEASED; urgency=medium
 
+  * Pick SVN r277808 from FreeBSD 10.1-RELEASE to fix:
+    - SA-15:02: SCTP SCTP_SS_VALUE kernel memory corruption and
+      disclosure vulnerability (CVE-2014-8612) (Closes: #776415)
+    - SA-15:03: SCTP stream reset vulnerability (CVE-2014-8613)
+      (Closes: #776416)
   * Build kernel images only on kfreebsd-any arches, so that any
     security or other RC-severity kernel bugs will not affect the
     official jessie release

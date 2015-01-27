@@ -36,3 +36,7 @@ firmware_load.diff
 999_config.diff
 aicasm-parallel-build-dependencies.diff
 ath9k-linux.diff
+
+# Security patches
+SA-15_02.kmem.patch
+SA-15_03.sctp.patch
