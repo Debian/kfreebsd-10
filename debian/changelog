@@ -1,3 +1,11 @@
+kfreebsd-10 (10.1~svn274115-2) UNRELEASED; urgency=medium
+
+  * Build kernel images only on kfreebsd-any arches, so that any
+    security or other RC-severity kernel bugs will not affect the
+    official jessie release
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Tue, 27 Jan 2015 20:02:52 +0000
+
 kfreebsd-10 (10.1~svn274115-1) unstable; urgency=medium
 
   [ Steven Chamberlain ]
@@ -6,9 +14,6 @@ kfreebsd-10 (10.1~svn274115-1) unstable; urgency=medium
       (CVE-2014-8476) (Closes: #768108)
   * Replace non-DFSG-free ar9300_devid.h with a 3-clause BSD substitute
     derived from Linux ath9k driver (Closes: #767583)
-  * Build kernel images only on kfreebsd-any arches, so that any
-    security or other RC-severity kernel bugs will not affect the
-    official jessie release
 
   [ Christoph Egger ]
   * Upload to unstable
