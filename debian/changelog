@@ -1,3 +1,13 @@
+kfreebsd-10 (10.1~svn274115-3) UNRELEASED; urgency=high
+
+  * Pick SVN r279264 from FreeBSD 10.1-RELEASE to fix:
+    - SA-15:04: integer overflow in IGMP protocol (CVE-2015-1414)
+      (Closes: #779195)
+    - EN-15:01: vt(4) crash with improper ioctl parameters
+      (CVE-2014-0998) (Closes: #779194)
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Wed, 25 Feb 2015 12:39:32 +0000
+
 kfreebsd-10 (10.1~svn274115-2) unstable; urgency=high
 
   * Pick SVN r277808 from FreeBSD 10.1-RELEASE to fix:

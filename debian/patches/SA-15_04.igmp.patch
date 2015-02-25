@@ -1,0 +1,20 @@
+Description:
+ Fix integer overflow in IGMP protocol [SA-15:04] (CVE-2015-1414)
+Origin: vendor, https://security.FreeBSD.org/patches/SA-15:04/igmp.patch
+Bug: https://www.freebsd.org/security/advisories/FreeBSD-SA-15:04.igmp.asc
+Bug-Debian: https://bugs.debian.org/779195
+Applied-Upstream: https://svnweb.freebsd.org/base?view=revision&revision=279264
+
+--- a/sys/netinet/igmp.c
++++ b/sys/netinet/igmp.c
+@@ -1533,8 +1533,8 @@
+ 		case IGMP_VERSION_3: {
+ 				struct igmpv3 *igmpv3;
+ 				uint16_t igmpv3len;
+-				uint16_t srclen;
+-				int nsrc;
++				uint16_t nsrc;
++				int srclen;
+ 
+ 				IGMPSTAT_INC(igps_rcv_v3_queries);
+ 				igmpv3 = (struct igmpv3 *)igmp;

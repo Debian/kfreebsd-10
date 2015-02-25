@@ -40,3 +40,5 @@ ath9k-linux.diff
 # Security patches
 SA-15_02.kmem.patch
 SA-15_03.sctp.patch
+SA-15_04.igmp.patch
+EN-15_01.vt.patch
