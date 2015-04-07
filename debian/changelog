@@ -1,4 +1,4 @@
-kfreebsd-10 (10.1~svn274115-4) UNRELEASED; urgency=medium
+kfreebsd-10 (10.1~svn274115-4) unstable; urgency=high
 
   * Pick SVN r281232 from FreeBSD 10.1-RELEASE to fix:
     - SA-15:04: integer overflow in IGMP protocol (CVE-2015-1414)
