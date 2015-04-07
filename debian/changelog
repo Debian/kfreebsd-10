@@ -1,8 +1,10 @@
 kfreebsd-10 (10.1~svn274115-4) UNRELEASED; urgency=medium
 
-  * Pick SVN SVN r281232 from FreeBSD 10.1-RELEASE to fix:
+  * Pick SVN r281232 from FreeBSD 10.1-RELEASE to fix:
     - SA-15:04: integer overflow in IGMP protocol (CVE-2015-1414)
       updated patch from advisory revision 1.1 (Closes: #XXXXXX)
+    - SA-15:09: Denial of Service with IPv6 Router Advertisements
+      (CVE-2015-2923) (Closes: #XXXXXX)
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Tue, 07 Apr 2015 22:13:19 +0100
 
