@@ -2,7 +2,7 @@ Description:
  Fix Denial of Service with IPv6 Router Advertisements [SA-15:09] (CVE-2015-2923)
 Origin: vendor, https://security.FreeBSD.org/patches/SA-15:09/ipv6.patch
 Bug: https://www.freebsd.org/security/advisories/FreeBSD-SA-15:09.ipv6.asc
-Bug-Debian: https://bugs.debian.org/XXXXXX
+Bug-Debian: https://bugs.debian.org/782107
 Applied-Upstream: https://svnweb.freebsd.org/base?view=revision&revision=281232
 
 --- a/sys/netinet6/nd6_rtr.c
