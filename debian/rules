@@ -95,7 +95,12 @@ get-orig-source:
 	rm -rf $(ORIG_DIR)
 	svn export --ignore-keywords -r $(svn_revision) $(SVN)/sys $(ORIG_DIR)/sys
 	cd $(ORIG_DIR) && $(CURDIR)/debian/prune.sh
-	tar --numeric-owner --owner 0 --group 0 -cJf ../$(ORIG_TAR) $(ORIG_DIR)
+	# Create tarball with files sorted in a stable order, see
+	# https://wiki.debian.org/ReproducibleBuilds/FileOrderInTarballs
+	find $(ORIG_DIR) -print0 | LC_ALL=C sort -z \
+	 | tar --null --no-recursion --files-from - \
+	    --numeric-owner --owner 0 --group 0 \
+	    -cJf ../$(ORIG_TAR)
 	rm -rf $(ORIG_DIR)
 
 control: clean
@@ -166,7 +171,11 @@ install-indep-stamp: build-indep
 	chown -R root.src $(SRC_DIR)
 	# Avoid the top-level directory timestamp changing
 	touch $(SRC_DIR) --reference=$(SRC_DIR)/sys
-	tar cfJ $(SOURCE_PACKAGE)/usr/src/$(SRC_TAR) $(SRC_DIR)
+	# Create tarball with files sorted in a stable order, see
+	# https://wiki.debian.org/ReproducibleBuilds/FileOrderInTarballs
+	find $(SRC_DIR) -print0 | LC_ALL=C sort -z \
+	 | tar --null --no-recursion --files-from - \
+	    -cJf $(SOURCE_PACKAGE)/usr/src/$(SRC_TAR)
 
 	touch install-indep-stamp
 
