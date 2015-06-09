@@ -1,8 +1,11 @@
-kfreebsd-10 (10.1~svn274115-5) UNRELEASED; urgency=medium
+kfreebsd-10 (10.1~svn274115-5) unstable; urgency=medium
 
   * Create tarballs of upstream source, and of the kfreebsd-source
     binary-indep package, using a reproducible stable file order.
     (Closes: #786615)
+  * In the kfreebsd-source binary-indep package, clamp timestamps
+    to be no later than the last debian/changelog entry.
+    (Closes: #788238)
   * Pick SVN r282873 from FreeBSD 10.1-RELEASE to fix:
     - EN-15:05: Fix deadlock on reboot with UFS tuned with SU+J.
       (Closes: #786619)

@@ -44,6 +44,7 @@ FLAVOR_DIR	:= flavor-$(version)-$(abiname)
 ORIG_DIR	:= $(source)-$(tar_version)
 ORIG_TAR	:= $(source)_$(tar_version).orig.tar.xz
 PATH		:= /usr/lib/freebsd:$(PATH)
+BUILD_DATE	?= $(shell dpkg-parsechangelog --show-field=Date)
 
 ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 	NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
@@ -169,8 +170,10 @@ install-indep-stamp: build-indep
 
 	mkdir -p $(SOURCE_PACKAGE)/usr/src
 	chown -R root.src $(SRC_DIR)
-	# Avoid the top-level directory timestamp changing
-	touch $(SRC_DIR) --reference=$(SRC_DIR)/sys
+	# Clamp timestamps to be no newer than last changelog entry, see
+	# https://wiki.debian.org/ReproducibleBuilds/TimestampsInTarball
+	find $(SRC_DIR) -newermt "$(BUILD_DATE)" -print0 \
+	 | xargs -0r touch --no-dereference --date="$(BUILD_DATE)"
 	# Create tarball with files sorted in a stable order, see
 	# https://wiki.debian.org/ReproducibleBuilds/FileOrderInTarballs
 	find $(SRC_DIR) -print0 | LC_ALL=C sort -z \
