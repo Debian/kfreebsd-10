@@ -1,3 +1,11 @@
+kfreebsd-10 (10.1~svn274115-6) unstable; urgency=medium
+
+  * Restore files missing from previous upload:
+    - debian/installer/amd64/kernel-versions
+    - debian/installer/i386/kernel-versions
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Sun, 05 Jul 2015 19:53:28 +0100
+
 kfreebsd-10 (10.1~svn274115-5) unstable; urgency=medium
 
   * Create tarballs of upstream source, and of the kfreebsd-source
