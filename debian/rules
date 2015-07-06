@@ -170,6 +170,7 @@ install-indep-stamp: build-indep
 
 	mkdir -p $(SOURCE_PACKAGE)/usr/src
 	chown -R root.src $(SRC_DIR)
+	chmod -R go+r-w $(SRC_DIR)
 	# Clamp timestamps to be no newer than last changelog entry, see
 	# https://wiki.debian.org/ReproducibleBuilds/TimestampsInTarball
 	find $(SRC_DIR) -newermt "$(BUILD_DATE)" -print0 \
