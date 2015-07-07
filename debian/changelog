@@ -4,6 +4,8 @@ kfreebsd-10 (10.1~svn274115-7) UNRELEASED; urgency=medium
     and directories in the tarball are not writable by the src
     group, but readable by all, regardless of the umask setting
     when the package is built. (Closes: #791584)
+  * Build with clang-3.6 on i386, amd64, arm;  due to clang-3.4
+    going away soon. (Closes: #790358)
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Mon, 06 Jul 2015 13:47:06 +0100
 
