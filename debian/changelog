@@ -1,3 +1,10 @@
+kfreebsd-10 (10.1~svn274115-8) UNRELEASED; urgency=medium
+
+  * Use new preferred hostname for upstream SVN with HTTPS
+    (svn.freebsd.org)
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Wed, 22 Jul 2015 22:12:38 +0100
+
 kfreebsd-10 (10.1~svn274115-7) unstable; urgency=medium
 
   * In the kfreebsd-source binary-indep package, ensure files
