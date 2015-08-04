@@ -7,6 +7,8 @@ kfreebsd-10 (10.1~svn274115-8) UNRELEASED; urgency=medium
       state.
   * Pick SVN r285979 from FreeBSD 10.1-RELEASE to fix:
     - SA-15:15: Resource exhaustion in TCP reassembly.
+  * Pick SVN r284193 from FreeBSD 10.1-RELEASE to fix:
+    - EN-15:07: ZFS Reliability Improvements.
   * Use new preferred hostname for upstream SVN with HTTPS
     (svn.freebsd.org).
 
