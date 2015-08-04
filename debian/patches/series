@@ -37,10 +37,12 @@ firmware_load.diff
 aicasm-parallel-build-dependencies.diff
 ath9k-linux.diff
 
-# Security patches
+# Security patches / errata
 SA-15_02.kmem.patch
 SA-15_03.sctp.patch
 SA-15_04.igmp.patch
 EN-15_01.vt.patch
 SA-15_09.ipv6.patch
 EN-15_05.ufs.patch
+SA-15_13.tcp.patch
+SA-15_15.tcp.patch

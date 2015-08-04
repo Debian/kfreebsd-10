@@ -2,6 +2,11 @@ kfreebsd-10 (10.1~svn274115-8) UNRELEASED; urgency=medium
 
   * Build with clang-3.5, at least until clang-3.6 is fixed, so that
     clang-3.4 can be removed from unstable.
+  * Pick SVN r285780 from FreeBSD 10.1-RELEASE to fix:
+    - SA-15:13: Resource exhaustion due to sessions stuck in LAST_ACK
+      state.
+  * Pick SVN r285979 from FreeBSD 10.1-RELEASE to fix:
+    - SA-15:15: Resource exhaustion in TCP reassembly.
   * Use new preferred hostname for upstream SVN with HTTPS
     (svn.freebsd.org).
 
