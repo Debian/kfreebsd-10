@@ -1,9 +1,11 @@
 kfreebsd-10 (10.1~svn274115-8) UNRELEASED; urgency=medium
 
+  * Build with clang-3.5, at least until clang-3.6 is fixed, so that
+    clang-3.4 can be removed from unstable.
   * Use new preferred hostname for upstream SVN with HTTPS
-    (svn.freebsd.org)
+    (svn.freebsd.org).
 
- -- Steven Chamberlain <steven@pyro.eu.org>  Wed, 22 Jul 2015 22:12:38 +0100
+ -- Steven Chamberlain <steven@pyro.eu.org>  Tue, 04 Aug 2015 11:24:29 +0100
 
 kfreebsd-10 (10.1~svn274115-7) unstable; urgency=medium
 
