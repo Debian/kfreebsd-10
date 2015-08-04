@@ -1,4 +1,4 @@
-kfreebsd-10 (10.1~svn274115-8) UNRELEASED; urgency=medium
+kfreebsd-10 (10.1~svn274115-8) unstable; urgency=medium
 
   * Build with clang-3.5, at least until clang-3.6 is fixed, so that
     clang-3.4 can be removed from unstable.
