@@ -27,6 +27,7 @@ Standards-Version: 3.9.2
 
 Package: kfreebsd-source-@version@
 Architecture: all
+Multi-Arch: foreign
 Depends: ${misc:Depends}
 Recommends: freebsd-buildutils (>= 7)
 Provides: kfreebsd-source-@major@, kfreebsd-source
