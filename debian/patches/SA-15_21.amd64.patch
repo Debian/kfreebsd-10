@@ -1,0 +1,56 @@
+Description:
+ Fix local privilege escalation in IRET handler. [SA-15:21]
+ (CVE-2015-5675)
+Origin: vendor, https://security.FreeBSD.org/patches/SA-15:21/amd64.patch
+Bug: https://www.freebsd.org/security/advisories/FreeBSD-SA-15:21.amd64.asc
+Bug-Debian: https://bugs.debian.org/796996
+Applied-Upstream: https://svnweb.freebsd.org/base?view=revision&revision=287146
+
+--- a/sys/amd64/amd64/exception.S
++++ b/sys/amd64/amd64/exception.S
+@@ -154,9 +154,13 @@
+ IDTVEC(tss)
+ 	TRAP_ERR(T_TSSFLT)
+ IDTVEC(missing)
+-	TRAP_ERR(T_SEGNPFLT)
++	subq	$TF_ERR,%rsp
++	movl	$T_SEGNPFLT,TF_TRAPNO(%rsp)
++	jmp	prot_addrf
+ IDTVEC(stk)
+-	TRAP_ERR(T_STKFLT)
++	subq	$TF_ERR,%rsp
++	movl	$T_STKFLT,TF_TRAPNO(%rsp)
++	jmp	prot_addrf
+ IDTVEC(align)
+ 	TRAP_ERR(T_ALIGNFLT)
+ 
+@@ -319,6 +323,7 @@
+ IDTVEC(prot)
+ 	subq	$TF_ERR,%rsp
+ 	movl	$T_PROTFLT,TF_TRAPNO(%rsp)
++prot_addrf:
+ 	movq	$0,TF_ADDR(%rsp)
+ 	movq	%rdi,TF_RDI(%rsp)	/* free up a GP register */
+ 	leaq	doreti_iret(%rip),%rdi
+--- a/sys/amd64/amd64/machdep.c
++++ b/sys/amd64/amd64/machdep.c
+@@ -433,6 +433,7 @@
+ 	regs->tf_rflags &= ~(PSL_T | PSL_D);
+ 	regs->tf_cs = _ucodesel;
+ 	regs->tf_ds = _udatasel;
++	regs->tf_ss = _udatasel;
+ 	regs->tf_es = _udatasel;
+ 	regs->tf_fs = _ufssel;
+ 	regs->tf_gs = _ugssel;
+--- a/sys/amd64/amd64/trap.c
++++ b/sys/amd64/amd64/trap.c
+@@ -457,8 +457,6 @@
+ 			goto out;
+ 
+ 		case T_STKFLT:		/* stack fault */
+-			break;
+-
+ 		case T_PROTFLT:		/* general protection fault */
+ 		case T_SEGNPFLT:	/* segment not present fault */
+ 			if (td->td_intr_nesting_level != 0)
+
