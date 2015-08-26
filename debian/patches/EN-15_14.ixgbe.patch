@@ -1,0 +1,28 @@
+Description:
+ Disabled ixgbe(4) flow-director support. [EN-15:14]
+Origin: vendor
+Bug: https://www.freebsd.org/security/advisories/FreeBSD-EN-15:14.ixgbe.asc
+Applied-Upstream: https://svnweb.freebsd.org/base?view=revision&revision=287146
+
+--- a/sys/conf/files
++++ b/sys/conf/files
+@@ -1704,7 +1704,7 @@
+ dev/ixgb/ixgb_ee.c		optional ixgb
+ dev/ixgb/ixgb_hw.c		optional ixgb
+ dev/ixgbe/ixgbe.c		optional ixgbe inet \
+-	compile-with "${NORMAL_C} -I$S/dev/ixgbe -DSMP -DIXGBE_FDIR"
++	compile-with "${NORMAL_C} -I$S/dev/ixgbe -DSMP"
+ dev/ixgbe/ixv.c			optional ixgbe inet \
+ 	compile-with "${NORMAL_C} -I$S/dev/ixgbe"
+ dev/ixgbe/ixgbe_phy.c		optional ixgbe inet \
+--- a/sys/modules/ixgbe/Makefile
++++ b/sys/modules/ixgbe/Makefile
+@@ -12,7 +12,7 @@
+ SRCS    += ixgbe_common.c ixgbe_api.c ixgbe_phy.c ixgbe_mbx.c ixgbe_vf.c
+ SRCS    += ixgbe_dcb.c ixgbe_dcb_82598.c ixgbe_dcb_82599.c
+ SRCS    += ixgbe_82599.c ixgbe_82598.c ixgbe_x540.c
+-CFLAGS+= -I${.CURDIR}/../../dev/ixgbe -DSMP -DIXGBE_FDIR
++CFLAGS+= -I${.CURDIR}/../../dev/ixgbe -DSMP
+ 
+ .if !defined(KERNBUILDDIR)
+ .if ${MK_INET_SUPPORT} != "no"

@@ -7,6 +7,8 @@ kfreebsd-10 (10.1~svn274115-10) UNRELEASED; urgency=high
   * Pick SVN r287146 from FreeBSD 10.1-RELEASE:
     - SA-15:21: Fix local privilege escalation in IRET handler.
       (CVE-2015-5675) (Closes: #796996)
+    - EN-15:14: Disabled ixgbe(4) flow-director support, due to an 
+      implementation bug.
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Sat, 22 Aug 2015 00:58:41 +0100
 
