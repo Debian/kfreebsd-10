@@ -1,4 +1,4 @@
-kfreebsd-10 (10.1~svn274115-10) UNRELEASED; urgency=high
+kfreebsd-10 (10.1~svn274115-10) unstable; urgency=high
 
   [ Christoph Egger ]
   * Make kfreebsd-source multi-arch foreign
