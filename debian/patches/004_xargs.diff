@@ -4,9 +4,11 @@ xargs -I works here, although it's not exactly the same.
 
 http://savannah.gnu.org/patch/?4916
 
---- a/sys/conf/kmod.mk
-+++ b/sys/conf/kmod.mk
-@@ -215,7 +215,7 @@
+Index: kfreebsd-10/sys/conf/kmod.mk
+===================================================================
+--- kfreebsd-10.orig/sys/conf/kmod.mk
++++ kfreebsd-10/sys/conf/kmod.mk
+@@ -222,7 +222,7 @@ ${FULLPROG}: ${OBJS}
  	grep -v '^#' < ${EXPORT_SYMS} > export_syms
  .endif
  	awk -f ${SYSDIR}/conf/kmod_syms.awk ${.TARGET} \
@@ -15,9 +17,11 @@ http://savannah.gnu.org/patch/?4916
  .endif
  .endif
  .if !defined(DEBUG_FLAGS) && ${__KLD_SHARED} == no
---- a/sys/contrib/dev/acpica/acpica_prep.sh
-+++ b/sys/contrib/dev/acpica/acpica_prep.sh
-@@ -58,10 +58,10 @@
+Index: kfreebsd-10/sys/contrib/dev/acpica/acpica_prep.sh
+===================================================================
+--- kfreebsd-10.orig/sys/contrib/dev/acpica/acpica_prep.sh
++++ kfreebsd-10/sys/contrib/dev/acpica/acpica_prep.sh
+@@ -60,10 +60,10 @@ done
  # copy files
  echo copying full dirs
  for i in ${fulldirs}; do
@@ -30,9 +34,11 @@ http://savannah.gnu.org/patch/?4916
  
  # canonify include paths
  for H in ${src_headers}; do
---- a/sys/conf/kern.post.mk
-+++ b/sys/conf/kern.post.mk
-@@ -199,12 +199,9 @@
+Index: kfreebsd-10/sys/conf/kern.post.mk
+===================================================================
+--- kfreebsd-10.orig/sys/conf/kern.post.mk
++++ kfreebsd-10/sys/conf/kern.post.mk
+@@ -199,12 +199,9 @@ SRCS=	assym.s vnode_if.h ${BEFORE_DEPEND
  	rm -f .newdep
  	${MAKE} -V CFILES_NOZFS -V SYSTEM_CFILES -V GEN_CFILES | \
  	    MKDEP_CPP="${CC} -E" CC="${CC}" xargs mkdep -a -f .newdep ${CFLAGS}

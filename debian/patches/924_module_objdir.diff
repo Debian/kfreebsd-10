@@ -1,11 +1,13 @@
---- a/sys/conf/kern.pre.mk
-+++ b/sys/conf/kern.pre.mk
-@@ -182,7 +182,7 @@
+Index: kfreebsd-10/sys/conf/kern.pre.mk
+===================================================================
+--- kfreebsd-10.orig/sys/conf/kern.pre.mk
++++ kfreebsd-10/sys/conf/kern.pre.mk
+@@ -182,7 +182,7 @@ SYSTEM_DEP+= ${LDSCRIPT}
  # MKMODULESENV is set here so that port makefiles can augment
  # them.
  
 -MKMODULESENV+=	MAKEOBJDIRPREFIX=${.OBJDIR}/modules KMODDIR=${KODIR}
 +MKMODULESENV+=	MAKEOBJDIRPREFIX=/ KMODDIR=${KODIR}
  MKMODULESENV+=	MACHINE_CPUARCH=${MACHINE_CPUARCH}
+ MKMODULESENV+=	MODULES_EXTRA="${MODULES_EXTRA}" WITHOUT_MODULES="${WITHOUT_MODULES}"
  .if (${KERN_IDENT} == LINT)
- MKMODULESENV+=	ALL_MODULES=LINT

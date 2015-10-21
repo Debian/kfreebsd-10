@@ -1,8 +1,10 @@
 
 Co-authored by Nali Toja
 
---- a/sys/conf/kern.mk
-+++ b/sys/conf/kern.mk
+Index: kfreebsd-10/sys/conf/kern.mk
+===================================================================
+--- kfreebsd-10.orig/sys/conf/kern.mk
++++ kfreebsd-10/sys/conf/kern.mk
 @@ -1,5 +1,8 @@
  # $FreeBSD$
  
@@ -12,7 +14,7 @@ Co-authored by Nali Toja
  #
  # Warning flags for compiling the kernel and components of the kernel:
  #
-@@ -62,7 +65,7 @@
+@@ -67,7 +70,7 @@ FORMAT_EXTENSIONS=	-fformat-extensions
  #
  .if ${MACHINE_CPUARCH} == "i386"
  .if ${COMPILER_TYPE} != "clang"

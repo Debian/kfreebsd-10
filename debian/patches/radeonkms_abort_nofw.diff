@@ -1,9 +1,11 @@
 
 Merged (rev 261497).
 
---- a/sys/dev/drm2/radeon/r600.c
-+++ b/sys/dev/drm2/radeon/r600.c
-@@ -3018,6 +3018,12 @@
+Index: kfreebsd-10/sys/dev/drm2/radeon/r600.c
+===================================================================
+--- kfreebsd-10.orig/sys/dev/drm2/radeon/r600.c
++++ kfreebsd-10/sys/dev/drm2/radeon/r600.c
+@@ -3024,6 +3024,12 @@ int r600_init(struct radeon_device *rdev
  		return -EINVAL;
  	}
  
@@ -16,9 +18,11 @@ Merged (rev 261497).
  	return 0;
  }
  
---- a/sys/dev/drm2/radeon/rv770.c
-+++ b/sys/dev/drm2/radeon/rv770.c
-@@ -1192,6 +1192,12 @@
+Index: kfreebsd-10/sys/dev/drm2/radeon/rv770.c
+===================================================================
+--- kfreebsd-10.orig/sys/dev/drm2/radeon/rv770.c
++++ kfreebsd-10/sys/dev/drm2/radeon/rv770.c
+@@ -1195,6 +1195,12 @@ int rv770_init(struct radeon_device *rde
  		return -EINVAL;
  	}
  

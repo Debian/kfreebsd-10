@@ -1,6 +1,8 @@
---- a/sys/modules/Makefile
-+++ b/sys/modules/Makefile
-@@ -181,8 +181,6 @@
+Index: kfreebsd-10/sys/modules/Makefile
+===================================================================
+--- kfreebsd-10.orig/sys/modules/Makefile
++++ kfreebsd-10/sys/modules/Makefile
+@@ -182,8 +182,6 @@ SUBDIR=	\
  	jme \
  	joy \
  	kbdmux \

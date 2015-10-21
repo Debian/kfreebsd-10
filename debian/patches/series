@@ -1,5 +1,5 @@
 # Patches from (or merged in) upstream
-radeonkms_abort_nofw.diff
+#radeonkms_abort_nofw.diff
 
 # Patches that are in good shape for merging upstream
 mount_remount.diff
@@ -38,14 +38,14 @@ aicasm-parallel-build-dependencies.diff
 ath9k-linux.diff
 
 # Security patches / errata
-SA-15_02.kmem.patch
-SA-15_03.sctp.patch
-SA-15_04.igmp.patch
-EN-15_01.vt.patch
-SA-15_09.ipv6.patch
-EN-15_05.ufs.patch
-SA-15_13.tcp.patch
-SA-15_15.tcp.patch
-EN-15_07.zfs.patch
-SA-15_21.amd64.patch
-EN-15_14.ixgbe.patch
+#SA-15_02.kmem.patch
+#SA-15_03.sctp.patch
+#SA-15_04.igmp.patch
+#EN-15_01.vt.patch
+#SA-15_09.ipv6.patch
+#EN-15_05.ufs.patch
+#SA-15_13.tcp.patch
+#SA-15_15.tcp.patch
+#EN-15_07.zfs.patch
+#SA-15_21.amd64.patch
+#EN-15_14.ixgbe.patch

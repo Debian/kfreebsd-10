@@ -1,9 +1,11 @@
 
 Staging area for fixes needed by userland.
 
---- a/sys/ia64/include/_types.h
-+++ b/sys/ia64/include/_types.h
-@@ -74,7 +74,9 @@
+Index: kfreebsd-10/sys/ia64/include/_types.h
+===================================================================
+--- kfreebsd-10.orig/sys/ia64/include/_types.h
++++ kfreebsd-10/sys/ia64/include/_types.h
+@@ -74,7 +74,9 @@ typedef	__int16_t	__int_least16_t;
  typedef	__int32_t	__int_least32_t;
  typedef	__int64_t	__int_least64_t;
  typedef	__int64_t	__ptrdiff_t;		/* ptr1 - ptr2 */
@@ -13,9 +15,11 @@ Staging area for fixes needed by userland.
  typedef	__int64_t	__segsz_t;		/* segment size (in pages) */
  typedef	__uint64_t	__size_t;		/* sizeof() */
  typedef	__int64_t	__ssize_t;		/* byte count or error */
---- a/sys/mips/include/_types.h
-+++ b/sys/mips/include/_types.h
-@@ -94,10 +94,14 @@
+Index: kfreebsd-10/sys/mips/include/_types.h
+===================================================================
+--- kfreebsd-10.orig/sys/mips/include/_types.h
++++ kfreebsd-10/sys/mips/include/_types.h
+@@ -94,10 +94,14 @@ typedef	__int16_t	__int_least16_t;
  typedef	__int32_t	__int_least32_t;
  typedef	__int64_t	__int_least64_t;
  #if defined(__mips_n64) || defined(__mips_n32)
@@ -30,9 +34,11 @@ Staging area for fixes needed by userland.
  typedef	__int32_t	f_register_t;
  #endif
  #ifdef __mips_n64
---- a/sys/powerpc/include/_types.h
-+++ b/sys/powerpc/include/_types.h
-@@ -94,7 +94,9 @@
+Index: kfreebsd-10/sys/powerpc/include/_types.h
+===================================================================
+--- kfreebsd-10.orig/sys/powerpc/include/_types.h
++++ kfreebsd-10/sys/powerpc/include/_types.h
+@@ -94,7 +94,9 @@ typedef	__int32_t	__int_least32_t;
  typedef	__int64_t	__int_least64_t;
  #ifdef __LP64__
  typedef	__int64_t	__ptrdiff_t;		/* ptr1 - ptr2 */
@@ -42,7 +48,7 @@ Staging area for fixes needed by userland.
  typedef	__int64_t	__segsz_t;		/* segment size (in pages) */
  typedef	__uint64_t	__size_t;		/* sizeof() */
  typedef	__int64_t	__ssize_t;		/* byte count or error */
-@@ -103,7 +105,9 @@
+@@ -103,7 +105,9 @@ typedef	__uint64_t	__uintfptr_t;
  typedef	__uint64_t	__uintptr_t;
  #else
  typedef	__int32_t	__ptrdiff_t;		/* ptr1 - ptr2 */
@@ -52,9 +58,11 @@ Staging area for fixes needed by userland.
  typedef	__int32_t	__segsz_t;		/* segment size (in pages) */
  typedef	__uint32_t	__size_t;		/* sizeof() */
  typedef	__int32_t	__ssize_t;		/* byte count or error */
---- a/sys/sparc64/include/_types.h
-+++ b/sys/sparc64/include/_types.h
-@@ -70,7 +70,9 @@
+Index: kfreebsd-10/sys/sparc64/include/_types.h
+===================================================================
+--- kfreebsd-10.orig/sys/sparc64/include/_types.h
++++ kfreebsd-10/sys/sparc64/include/_types.h
+@@ -70,7 +70,9 @@ typedef	__int16_t	__int_least16_t;
  typedef	__int32_t	__int_least32_t;
  typedef	__int64_t	__int_least64_t;
  typedef	__int64_t	__ptrdiff_t;		/* ptr1 - ptr2 */
@@ -64,9 +72,11 @@ Staging area for fixes needed by userland.
  typedef	__int64_t	__segsz_t;		/* segment size (in pages) */
  typedef	__uint64_t	__size_t;		/* sizeof() */
  typedef	__int64_t	__ssize_t;		/* byte count or error */
---- a/sys/sys/_timespec.h
-+++ b/sys/sys/_timespec.h
-@@ -41,9 +41,14 @@
+Index: kfreebsd-10/sys/sys/_timespec.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/_timespec.h
++++ kfreebsd-10/sys/sys/_timespec.h
+@@ -41,9 +41,14 @@ typedef	__time_t	time_t;
  #define	_TIME_T_DECLARED
  #endif
  
@@ -81,9 +91,11 @@ Staging area for fixes needed by userland.
 +#endif
  
  #endif /* !_SYS__TIMESPEC_H_ */
---- a/sys/sys/_timeval.h
-+++ b/sys/sys/_timeval.h
-@@ -41,6 +41,10 @@
+Index: kfreebsd-10/sys/sys/_timeval.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/_timeval.h
++++ kfreebsd-10/sys/sys/_timeval.h
+@@ -41,6 +41,10 @@ typedef	__time_t	time_t;
  #define	_TIME_T_DECLARED
  #endif
  
@@ -94,16 +106,18 @@ Staging area for fixes needed by userland.
  /*
   * Structure returned by gettimeofday(2) system call, and used in other calls.
   */
-@@ -48,5 +52,6 @@
+@@ -48,5 +52,6 @@ struct timeval {
  	time_t		tv_sec;		/* seconds */
  	suseconds_t	tv_usec;	/* and microseconds */
  };
 +#endif
  
  #endif /* !_SYS__TIMEVAL_H_ */
---- a/sys/sys/_types.h
-+++ b/sys/sys/_types.h
-@@ -39,10 +39,19 @@
+Index: kfreebsd-10/sys/sys/_types.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/_types.h
++++ kfreebsd-10/sys/sys/_types.h
+@@ -39,10 +39,19 @@ typedef	__uint32_t	__blksize_t;	/* file
  typedef	__int64_t	__blkcnt_t;	/* file block count */
  typedef	__int32_t	__clockid_t;	/* clock_gettime()... */
  typedef	__uint32_t	__fflags_t;	/* file flags */
@@ -123,7 +137,7 @@ Staging area for fixes needed by userland.
  typedef	__uint32_t	__ino_t;	/* inode number */
  typedef	long		__key_t;	/* IPC key (for Sys V IPC) */
  typedef	__int32_t	__lwpid_t;	/* Thread ID (a.k.a. LWP) */
-@@ -58,7 +67,11 @@
+@@ -58,7 +67,11 @@ typedef	__int64_t	__rlim_t;	/* resource
  typedef	__uint8_t	__sa_family_t;
  typedef	__uint32_t	__socklen_t;
  typedef	long		__suseconds_t;	/* microseconds (signed) */
@@ -135,7 +149,7 @@ Staging area for fixes needed by userland.
  typedef	struct __mq	*__mqd_t;	/* mq_open()... */
  typedef	__uint32_t	__uid_t;
  typedef	unsigned int	__useconds_t;	/* microseconds (unsigned) */
-@@ -107,9 +120,13 @@
+@@ -107,9 +120,13 @@ typedef	__uint32_t	__fixpt_t;	/* fixed p
   * mbstate_t is an opaque object to keep conversion state during multibyte
   * stream conversions.
   */
@@ -149,8 +163,10 @@ Staging area for fixes needed by userland.
 +#endif
  
  #endif /* !_SYS__TYPES_H_ */
---- a/sys/sys/elf32.h
-+++ b/sys/sys/elf32.h
+Index: kfreebsd-10/sys/sys/elf32.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/elf32.h
++++ kfreebsd-10/sys/sys/elf32.h
 @@ -31,15 +31,21 @@
  
  #include <sys/elf_common.h>
@@ -173,7 +189,7 @@ Staging area for fixes needed by userland.
  typedef uint64_t	Elf32_Lword;
  
  typedef Elf32_Word	Elf32_Hashelt;
-@@ -48,6 +54,7 @@
+@@ -48,6 +54,7 @@ typedef Elf32_Word	Elf32_Hashelt;
  typedef Elf32_Word	Elf32_Size;
  typedef Elf32_Sword	Elf32_Ssize;
  
@@ -181,7 +197,7 @@ Staging area for fixes needed by userland.
  /*
   * ELF header.
   */
-@@ -165,6 +172,8 @@
+@@ -165,6 +172,8 @@ typedef struct {
  #define	ELF32_M_SIZE(info)	((unsigned char)(info))
  #define	ELF32_M_INFO(sym, size)	(((sym)<<8)+(unsigned char)(size))
  
@@ -190,7 +206,7 @@ Staging area for fixes needed by userland.
  /*
   *	Hardware/Software capabilities entry
   */
-@@ -176,6 +185,7 @@
+@@ -176,6 +185,7 @@ typedef struct {
  	} c_un;
  } Elf32_Cap;
  
@@ -198,7 +214,7 @@ Staging area for fixes needed by userland.
  /*
   * Symbol table entries.
   */
-@@ -234,12 +244,15 @@
+@@ -234,12 +244,15 @@ typedef struct
  	Elf32_Word	vna_name;
  	Elf32_Word	vna_next;
  } Elf32_Vernaux;
@@ -214,8 +230,10 @@ Staging area for fixes needed by userland.
 +#endif
  
  #endif /* !_SYS_ELF32_H_ */
---- a/sys/sys/elf64.h
-+++ b/sys/sys/elf64.h
+Index: kfreebsd-10/sys/sys/elf64.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/elf64.h
++++ kfreebsd-10/sys/sys/elf64.h
 @@ -31,18 +31,26 @@
  
  #include <sys/elf_common.h>
@@ -243,7 +261,7 @@ Staging area for fixes needed by userland.
  
  /*
   * Types of dynamic symbol hash table bucket and chain elements.
-@@ -57,6 +65,7 @@
+@@ -57,6 +65,7 @@ typedef Elf64_Word	Elf64_Hashelt;
  typedef Elf64_Xword	Elf64_Size;
  typedef Elf64_Sxword	Elf64_Ssize;
  
@@ -251,7 +269,7 @@ Staging area for fixes needed by userland.
  /*
   * ELF header.
   */
-@@ -172,6 +181,8 @@
+@@ -172,6 +181,8 @@ typedef struct {
  #define	ELF64_M_SIZE(info)	((unsigned char)(info))
  #define	ELF64_M_INFO(sym, size)	(((sym)<<8)+(unsigned char)(size))
  
@@ -260,7 +278,7 @@ Staging area for fixes needed by userland.
  /*
   *	Hardware/Software capabilities entry
   */
-@@ -183,6 +194,7 @@
+@@ -183,6 +194,7 @@ typedef struct {
  	} c_un;
  } Elf64_Cap;
  
@@ -268,7 +286,7 @@ Staging area for fixes needed by userland.
  /*
   * Symbol table entries.
   */
-@@ -237,12 +249,15 @@
+@@ -237,12 +249,15 @@ typedef struct {
  	Elf64_Word	vna_name;
  	Elf64_Word	vna_next;
  } Elf64_Vernaux;
@@ -284,9 +302,11 @@ Staging area for fixes needed by userland.
 +#endif
  
  #endif /* !_SYS_ELF64_H_ */
---- a/sys/sys/endian.h
-+++ b/sys/sys/endian.h
-@@ -53,6 +53,10 @@
+Index: kfreebsd-10/sys/sys/endian.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/endian.h
++++ kfreebsd-10/sys/sys/endian.h
+@@ -53,6 +53,10 @@ typedef	__uint64_t	uint64_t;
  #define	_UINT64_T_DECLARED
  #endif
   
@@ -297,7 +317,7 @@ Staging area for fixes needed by userland.
  /*
   * General byte order swapping functions.
   */
-@@ -93,6 +97,7 @@
+@@ -93,6 +97,7 @@ typedef	__uint64_t	uint64_t;
  #define	le32toh(x)	bswap32((x))
  #define	le64toh(x)	bswap64((x))
  #endif /* _BYTE_ORDER == _LITTLE_ENDIAN */
@@ -305,8 +325,10 @@ Staging area for fixes needed by userland.
  
  /* Alignment-agnostic encode/decode bytestream to/from little/big endian. */
  
---- a/sys/sys/limits.h
-+++ b/sys/sys/limits.h
+Index: kfreebsd-10/sys/sys/limits.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/limits.h
++++ kfreebsd-10/sys/sys/limits.h
 @@ -35,6 +35,11 @@
  #include <sys/cdefs.h>
  #include <machine/_limits.h>
@@ -327,8 +349,10 @@ Staging area for fixes needed by userland.
  
  #if __POSIX_VISIBLE >= 200112 || __XSI_VISIBLE
  #define	SIZE_T_MAX	__SIZE_T_MAX	/* max value for a size_t */
---- a/sys/sys/param.h
-+++ b/sys/sys/param.h
+Index: kfreebsd-10/sys/sys/param.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/param.h
++++ kfreebsd-10/sys/sys/param.h
 @@ -40,9 +40,15 @@
  
  #include <sys/_null.h>
@@ -385,7 +409,7 @@ Staging area for fixes needed by userland.
  #define	NBPW	sizeof(int)	/* number of bytes per word (integer) */
  
  #define	CMASK	022		/* default file mask: S_IWGRP|S_IWOTH */
-@@ -262,6 +276,7 @@
+@@ -276,6 +290,7 @@
  #define	MAXPATHLEN	PATH_MAX
  #define MAXSYMLINKS	32
  
@@ -393,7 +417,7 @@ Staging area for fixes needed by userland.
  /* Bit map related macros. */
  #define	setbit(a,i)	(((unsigned char *)(a))[(i)/NBBY] |= 1<<((i)%NBBY))
  #define	clrbit(a,i)	(((unsigned char *)(a))[(i)/NBBY] &= ~(1<<((i)%NBBY)))
-@@ -269,6 +284,7 @@
+@@ -283,6 +298,7 @@
  	(((const unsigned char *)(a))[(i)/NBBY] & (1<<((i)%NBBY)))
  #define	isclr(a,i)							\
  	((((const unsigned char *)(a))[(i)/NBBY] & (1<<((i)%NBBY))) == 0)
@@ -401,7 +425,7 @@ Staging area for fixes needed by userland.
  
  /* Macros for counting and rounding. */
  #ifndef howmany
-@@ -277,9 +293,13 @@
+@@ -291,9 +307,13 @@
  #define	nitems(x)	(sizeof((x)) / sizeof((x)[0]))
  #define	rounddown(x, y)	(((x)/(y))*(y))
  #define	rounddown2(x, y) ((x)&(~((y)-1)))          /* if y is power of two */
@@ -415,8 +439,10 @@ Staging area for fixes needed by userland.
  
  /* Macros for min/max. */
  #define	MIN(a,b) (((a)<(b))?(a):(b))
---- a/sys/sys/queue.h
-+++ b/sys/sys/queue.h
+Index: kfreebsd-10/sys/sys/queue.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/queue.h
++++ kfreebsd-10/sys/sys/queue.h
 @@ -30,8 +30,12 @@
   * $FreeBSD$
   */
@@ -432,7 +458,7 @@ Staging area for fixes needed by userland.
  
  #include <sys/cdefs.h>
  
-@@ -166,10 +170,12 @@
+@@ -166,10 +170,12 @@ struct {								\
  
  #define	SLIST_FIRST(head)	((head)->slh_first)
  
@@ -445,7 +471,7 @@ Staging area for fixes needed by userland.
  
  #define	SLIST_FOREACH_FROM(var, head, field)				\
  	for ((var) = ((var) ? (var) : SLIST_FIRST((head)));		\
-@@ -191,6 +197,7 @@
+@@ -191,6 +197,7 @@ struct {								\
  	    ((var) = *(varp)) != NULL;					\
  	    (varp) = &SLIST_NEXT((var), field))
  
@@ -453,7 +479,7 @@ Staging area for fixes needed by userland.
  #define	SLIST_INIT(head) do {						\
  	SLIST_FIRST((head)) = NULL;					\
  } while (0)
-@@ -204,9 +211,11 @@
+@@ -204,9 +211,11 @@ struct {								\
  	SLIST_NEXT((elm), field) = SLIST_FIRST((head));			\
  	SLIST_FIRST((head)) = (elm);					\
  } while (0)
@@ -465,7 +491,7 @@ Staging area for fixes needed by userland.
  #define	SLIST_REMOVE(head, elm, type, field) do {			\
  	QMD_SAVELINK(oldnext, (elm)->field.sle_next);			\
  	if (SLIST_FIRST((head)) == (elm)) {				\
-@@ -220,7 +229,9 @@
+@@ -220,7 +229,9 @@ struct {								\
  	}								\
  	TRASHIT(*oldnext);						\
  } while (0)
@@ -475,7 +501,7 @@ Staging area for fixes needed by userland.
  #define SLIST_REMOVE_AFTER(elm, field) do {				\
  	SLIST_NEXT(elm, field) =					\
  	    SLIST_NEXT(SLIST_NEXT(elm, field), field);			\
-@@ -229,6 +240,7 @@
+@@ -229,6 +240,7 @@ struct {								\
  #define	SLIST_REMOVE_HEAD(head, field) do {				\
  	SLIST_FIRST((head)) = SLIST_NEXT(SLIST_FIRST((head)), field);	\
  } while (0)
@@ -483,7 +509,7 @@ Staging area for fixes needed by userland.
  
  #define SLIST_SWAP(head1, head2, type) do {				\
  	struct type *swap_first = SLIST_FIRST(head1);			\
-@@ -256,6 +268,7 @@
+@@ -256,6 +268,7 @@ struct {								\
  /*
   * Singly-linked Tail queue functions.
   */
@@ -491,7 +517,7 @@ Staging area for fixes needed by userland.
  #define	STAILQ_CONCAT(head1, head2) do {				\
  	if (!STAILQ_EMPTY((head2))) {					\
  		*(head1)->stqh_last = (head2)->stqh_first;		\
-@@ -263,36 +276,44 @@
+@@ -263,36 +276,44 @@ struct {								\
  		STAILQ_INIT((head2));					\
  	}								\
  } while (0)
@@ -536,7 +562,7 @@ Staging area for fixes needed by userland.
  #define	STAILQ_INSERT_AFTER(head, tqelm, elm, field) do {		\
  	if ((STAILQ_NEXT((elm), field) = STAILQ_NEXT((tqelm), field)) == NULL)\
  		(head)->stqh_last = &STAILQ_NEXT((elm), field);		\
-@@ -310,6 +331,7 @@
+@@ -310,6 +331,7 @@ struct {								\
  	*(head)->stqh_last = (elm);					\
  	(head)->stqh_last = &STAILQ_NEXT((elm), field);			\
  } while (0)
@@ -544,7 +570,7 @@ Staging area for fixes needed by userland.
  
  #define	STAILQ_LAST(head, type, field)					\
  	(STAILQ_EMPTY((head)) ? NULL :					\
-@@ -317,6 +339,7 @@
+@@ -317,6 +339,7 @@ struct {								\
  
  #define	STAILQ_NEXT(elm, field)	((elm)->field.stqe_next)
  
@@ -552,7 +578,7 @@ Staging area for fixes needed by userland.
  #define	STAILQ_REMOVE(head, elm, type, field) do {			\
  	QMD_SAVELINK(oldnext, (elm)->field.stqe_next);			\
  	if (STAILQ_FIRST((head)) == (elm)) {				\
-@@ -330,6 +353,7 @@
+@@ -330,6 +353,7 @@ struct {								\
  	}								\
  	TRASHIT(*oldnext);						\
  } while (0)
@@ -560,7 +586,7 @@ Staging area for fixes needed by userland.
  
  #define STAILQ_REMOVE_AFTER(head, elm, field) do {			\
  	if ((STAILQ_NEXT(elm, field) =					\
-@@ -337,11 +361,13 @@
+@@ -337,11 +361,13 @@ struct {								\
  		(head)->stqh_last = &STAILQ_NEXT((elm), field);		\
  } while (0)
  
@@ -574,7 +600,7 @@ Staging area for fixes needed by userland.
  
  #define STAILQ_SWAP(head1, head2, type) do {				\
  	struct type *swap_first = STAILQ_FIRST(head1);			\
-@@ -407,30 +433,37 @@
+@@ -407,30 +433,37 @@ struct {								\
  
  #define	LIST_FIRST(head)	((head)->lh_first)
  
@@ -612,7 +638,7 @@ Staging area for fixes needed by userland.
  #define	LIST_INSERT_AFTER(listelm, elm, field) do {			\
  	QMD_LIST_CHECK_NEXT(listelm, field);				\
  	if ((LIST_NEXT((elm), field) = LIST_NEXT((listelm), field)) != NULL)\
-@@ -455,6 +488,7 @@
+@@ -455,6 +488,7 @@ struct {								\
  	LIST_FIRST((head)) = (elm);					\
  	(elm)->field.le_prev = &LIST_FIRST((head));			\
  } while (0)
@@ -620,7 +646,7 @@ Staging area for fixes needed by userland.
  
  #define	LIST_NEXT(elm, field)	((elm)->field.le_next)
  
-@@ -462,6 +496,7 @@
+@@ -462,6 +496,7 @@ struct {								\
  	((elm)->field.le_prev == &LIST_FIRST((head)) ? NULL :		\
  	    __containerof((elm)->field.le_prev, struct type, field.le_next))
  
@@ -628,7 +654,7 @@ Staging area for fixes needed by userland.
  #define	LIST_REMOVE(elm, field) do {					\
  	QMD_SAVELINK(oldnext, (elm)->field.le_next);			\
  	QMD_SAVELINK(oldprev, (elm)->field.le_prev);			\
-@@ -474,6 +509,7 @@
+@@ -474,6 +509,7 @@ struct {								\
  	TRASHIT(*oldnext);						\
  	TRASHIT(*oldprev);						\
  } while (0)
@@ -636,7 +662,7 @@ Staging area for fixes needed by userland.
  
  #define LIST_SWAP(head1, head2, type, field) do {			\
  	struct type *swap_tmp = LIST_FIRST((head1));			\
-@@ -488,22 +524,26 @@
+@@ -488,22 +524,26 @@ struct {								\
  /*
   * Tail queue declarations.
   */
@@ -663,7 +689,7 @@ Staging area for fixes needed by userland.
  
  /*
   * Tail queue functions.
-@@ -539,6 +579,7 @@
+@@ -539,6 +579,7 @@ struct {								\
  #define	QMD_TAILQ_CHECK_PREV(elm, field)
  #endif /* (_KERNEL && INVARIANTS) */
  
@@ -671,7 +697,7 @@ Staging area for fixes needed by userland.
  #define	TAILQ_CONCAT(head1, head2, field) do {				\
  	if (!TAILQ_EMPTY(head2)) {					\
  		*(head1)->tqh_last = (head2)->tqh_first;		\
-@@ -549,51 +590,61 @@
+@@ -549,51 +590,61 @@ struct {								\
  		QMD_TRACE_HEAD(head2);					\
  	}								\
  } while (0)
@@ -733,7 +759,7 @@ Staging area for fixes needed by userland.
  #define	TAILQ_INIT(head) do {						\
  	TAILQ_FIRST((head)) = NULL;					\
  	(head)->tqh_last = &TAILQ_FIRST((head));			\
-@@ -647,6 +698,7 @@
+@@ -647,6 +698,7 @@ struct {								\
  	QMD_TRACE_HEAD(head);						\
  	QMD_TRACE_ELEM(&(elm)->field);					\
  } while (0)
@@ -741,7 +767,7 @@ Staging area for fixes needed by userland.
  
  #define	TAILQ_LAST(head, headname)					\
  	(*(((struct headname *)((head)->tqh_last))->tqh_last))
-@@ -656,6 +708,7 @@
+@@ -656,6 +708,7 @@ struct {								\
  #define	TAILQ_PREV(elm, headname, field)				\
  	(*(((struct headname *)((elm)->field.tqe_prev))->tqh_last))
  
@@ -749,7 +775,7 @@ Staging area for fixes needed by userland.
  #define	TAILQ_REMOVE(head, elm, field) do {				\
  	QMD_SAVELINK(oldnext, (elm)->field.tqe_next);			\
  	QMD_SAVELINK(oldprev, (elm)->field.tqe_prev);			\
-@@ -673,6 +726,7 @@
+@@ -673,6 +726,7 @@ struct {								\
  	TRASHIT(*oldprev);						\
  	QMD_TRACE_ELEM(&(elm)->field);					\
  } while (0)
@@ -757,8 +783,10 @@ Staging area for fixes needed by userland.
  
  #define TAILQ_SWAP(head1, head2, type, field) do {			\
  	struct type *swap_first = (head1)->tqh_first;			\
---- a/sys/sys/time.h
-+++ b/sys/sys/time.h
+Index: kfreebsd-10/sys/sys/time.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/time.h
++++ kfreebsd-10/sys/sys/time.h
 @@ -37,10 +37,16 @@
  #include <sys/types.h>
  #include <sys/timespec.h>
@@ -776,7 +804,7 @@ Staging area for fixes needed by userland.
  #define	DST_NONE	0	/* not on dst */
  #define	DST_USA		1	/* USA style dst */
  #define	DST_AUST	2	/* Australian style dst */
-@@ -49,7 +55,7 @@
+@@ -49,7 +55,7 @@ struct timezone {
  #define	DST_EET		5	/* Eastern European dst */
  #define	DST_CAN		6	/* Canada */
  
@@ -785,7 +813,7 @@ Staging area for fixes needed by userland.
  struct bintime {
  	time_t	sec;
  	uint64_t frac;
-@@ -282,7 +288,7 @@
+@@ -282,7 +288,7 @@ tvtosbt(struct timeval _tv)
  
  #endif /* _KERNEL */
  
@@ -794,7 +822,7 @@ Staging area for fixes needed by userland.
  
  #define	timerclear(tvp)		((tvp)->tv_sec = (tvp)->tv_usec = 0)
  #define	timerisset(tvp)		((tvp)->tv_sec || (tvp)->tv_usec)
-@@ -310,6 +316,7 @@
+@@ -310,6 +316,7 @@ tvtosbt(struct timeval _tv)
  	} while (0)
  #endif
  
@@ -802,7 +830,7 @@ Staging area for fixes needed by userland.
  /*
   * Names of the interval timers, and structure
   * defining a timer setting.
-@@ -362,6 +369,8 @@
+@@ -362,6 +369,8 @@ struct clockinfo {
  #define	CPUCLOCK_WHICH_TID	1
  #endif
  
@@ -811,7 +839,7 @@ Staging area for fixes needed by userland.
  #ifdef _KERNEL
  
  /*
-@@ -473,6 +482,7 @@
+@@ -473,6 +482,7 @@ int	tvtohz(struct timeval *tv);
  #include <sys/cdefs.h>
  #include <sys/select.h>
  
@@ -819,7 +847,7 @@ Staging area for fixes needed by userland.
  __BEGIN_DECLS
  int	setitimer(int, const struct itimerval *, struct itimerval *);
  int	utimes(const char *, const struct timeval *);
-@@ -492,6 +502,7 @@
+@@ -492,6 +502,7 @@ int	gettimeofday(struct timeval *, struc
  #endif
  
  __END_DECLS
@@ -827,8 +855,10 @@ Staging area for fixes needed by userland.
  
  #endif /* !_KERNEL */
  
---- a/sys/sys/timespec.h
-+++ b/sys/sys/timespec.h
+Index: kfreebsd-10/sys/sys/timespec.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/timespec.h
++++ kfreebsd-10/sys/sys/timespec.h
 @@ -37,7 +37,9 @@
  #include <sys/cdefs.h>
  #include <sys/_timespec.h>
@@ -848,15 +878,17 @@ Staging area for fixes needed by userland.
  /*
   * Structure defined by POSIX.1b to be like a itimerval, but with
   * timespecs. Used in the timer_*() system calls.
-@@ -59,5 +62,6 @@
+@@ -59,5 +62,6 @@ struct itimerspec {
  	struct timespec  it_interval;
  	struct timespec  it_value;
  };
 +#endif
  
  #endif /* _SYS_TIMESPEC_H_ */
---- a/sys/sys/types.h
-+++ b/sys/sys/types.h
+Index: kfreebsd-10/sys/sys/types.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/types.h
++++ kfreebsd-10/sys/sys/types.h
 @@ -44,7 +44,21 @@
  #include <machine/endian.h>
  #include <sys/_types.h>
@@ -879,7 +911,7 @@ Staging area for fixes needed by userland.
  
  #if __BSD_VISIBLE
  typedef	unsigned char	u_char;
-@@ -179,7 +193,9 @@
+@@ -179,7 +193,9 @@ typedef	__pid_t		pid_t;		/* process id *
  #define	_PID_T_DECLARED
  #endif
  
@@ -889,7 +921,7 @@ Staging area for fixes needed by userland.
  
  #ifndef _RLIM_T_DECLARED
  typedef	__rlim_t	rlim_t;		/* resource limit */
-@@ -285,10 +301,10 @@
+@@ -285,10 +301,10 @@ typedef	_Bool	bool;
   * The following are all things that really shouldn't exist in this header,
   * since its purpose is to provide typedefs, not miscellaneous doodads.
   */
@@ -898,10 +930,10 @@ Staging area for fixes needed by userland.
  #include <sys/select.h>
  
 +#ifdef __FreeBSD__
- /*
-  * minor() gives a cookie instead of an index since we don't want to
-  * change the meanings of bits 0-15 or waste time and space shifting
-@@ -303,7 +319,7 @@
+ #ifdef __POPCNT__
+ #define	__bitcount64(x)	__builtin_popcountll((__uint64_t)(x))
+ #define	__bitcount32(x)	__builtin_popcount((__uint32_t)(x))
+@@ -365,7 +381,7 @@ __bitcount64(__uint64_t _x)
   * <stdio.h> to give broken programs a better chance of working with
   * 64-bit off_t's.
   */
@@ -910,8 +942,10 @@ Staging area for fixes needed by userland.
  __BEGIN_DECLS
  #ifndef _FTRUNCATE_DECLARED
  #define	_FTRUNCATE_DECLARED
---- a/sys/sys/_sigset.h
-+++ b/sys/sys/_sigset.h
+Index: kfreebsd-10/sys/sys/_sigset.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/_sigset.h
++++ kfreebsd-10/sys/sys/_sigset.h
 @@ -48,9 +48,11 @@
  #define	_SIG_BIT(sig)	(1 << (_SIG_IDX(sig) & 31))
  #define	_SIG_VALID(sig)	((sig) <= _SIG_MAXSIG && (sig) > 0)
@@ -924,8 +958,10 @@ Staging area for fixes needed by userland.
  
  #if defined(_KERNEL) && defined(COMPAT_43)
  typedef unsigned int osigset_t;
---- a/sys/sys/socket.h
-+++ b/sys/sys/socket.h
+Index: kfreebsd-10/sys/sys/socket.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/socket.h
++++ kfreebsd-10/sys/sys/socket.h
 @@ -38,6 +38,8 @@
  #include <sys/_iovec.h>
  #include <machine/_align.h>
@@ -935,7 +971,7 @@ Staging area for fixes needed by userland.
  /*
   * Definitions related to sockets: types, address families, options.
   */
-@@ -360,6 +362,10 @@
+@@ -360,6 +362,10 @@ struct sockproto {
  
  #define	PF_MAX		AF_MAX
  
@@ -946,7 +982,7 @@ Staging area for fixes needed by userland.
  /*
   * Definitions for network related sysctl, CTL_NET.
   *
-@@ -388,6 +394,8 @@
+@@ -388,6 +394,8 @@ struct sockproto {
  
  #endif /* __BSD_VISIBLE */
  
@@ -955,16 +991,18 @@ Staging area for fixes needed by userland.
  /*
   * Maximum queue length specifiable by listen.
   */
-@@ -661,5 +669,6 @@
+@@ -661,5 +669,6 @@ void so_listeners_apply_all(struct socke
  
  #endif
  
 +#endif
  
  #endif /* !_SYS_SOCKET_H_ */
---- a/sys/sys/_iovec.h
-+++ b/sys/sys/_iovec.h
-@@ -40,9 +40,13 @@
+Index: kfreebsd-10/sys/sys/_iovec.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/_iovec.h
++++ kfreebsd-10/sys/sys/_iovec.h
+@@ -40,9 +40,13 @@ typedef	__size_t	size_t;
  #define	_SIZE_T_DECLARED
  #endif
  
@@ -978,9 +1016,11 @@ Staging area for fixes needed by userland.
 +#endif
  
  #endif /* !_SYS__IOVEC_H_ */
---- a/sys/x86/include/_types.h
-+++ b/sys/x86/include/_types.h
-@@ -81,7 +81,10 @@
+Index: kfreebsd-10/sys/x86/include/_types.h
+===================================================================
+--- kfreebsd-10.orig/sys/x86/include/_types.h
++++ kfreebsd-10/sys/x86/include/_types.h
+@@ -81,7 +81,10 @@ typedef	float		__float_t;
  typedef	__int64_t	__intfptr_t;
  typedef	__int64_t	__intptr_t;
  #else
@@ -991,7 +1031,7 @@ Staging area for fixes needed by userland.
  typedef	__int32_t	__critical_t;
  typedef	long double	__double_t;
  typedef	long double	__float_t;
-@@ -99,11 +102,15 @@
+@@ -99,11 +102,15 @@ typedef	__int32_t	__int_least32_t;
  typedef	__int64_t	__int_least64_t;
  #ifdef	__LP64__
  typedef	__int64_t	__ptrdiff_t;		/* ptr1 - ptr2 */
@@ -1007,7 +1047,7 @@ Staging area for fixes needed by userland.
  typedef	__uint64_t	__uintfptr_t;
  typedef	__uint64_t	__uintptr_t;
  #else
-@@ -112,7 +119,9 @@
+@@ -112,7 +119,9 @@ typedef	__int32_t	__register_t;
  typedef	__int32_t	__segsz_t;
  typedef	__uint32_t	__size_t;
  typedef	__int32_t	__ssize_t;
@@ -1017,8 +1057,10 @@ Staging area for fixes needed by userland.
  typedef	__uint32_t	__uintfptr_t;
  typedef	__uint32_t	__uintptr_t;
  #endif
---- a/sys/x86/include/signal.h
-+++ b/sys/x86/include/signal.h
+Index: kfreebsd-10/sys/x86/include/signal.h
+===================================================================
+--- kfreebsd-10.orig/sys/x86/include/signal.h
++++ kfreebsd-10/sys/x86/include/signal.h
 @@ -46,9 +46,15 @@
  #endif
  
@@ -1036,7 +1078,7 @@ Staging area for fixes needed by userland.
  struct sigcontext {
  	struct __sigset sc_mask;	/* signal mask to restore */
  	int	sc_onstack;		/* sigstack state to restore */
-@@ -100,9 +106,15 @@
+@@ -100,9 +106,15 @@ struct sigcontext {
  #endif /* __i386__ */
  
  #ifdef __amd64__
@@ -1053,8 +1095,10 @@ Staging area for fixes needed by userland.
  /*
   * Information pushed on stack when a signal is delivered.
   * This is used by the kernel to restore state following
---- a/sys/x86/include/endian.h
-+++ b/sys/x86/include/endian.h
+Index: kfreebsd-10/sys/x86/include/endian.h
+===================================================================
+--- kfreebsd-10.orig/sys/x86/include/endian.h
++++ kfreebsd-10/sys/x86/include/endian.h
 @@ -56,7 +56,9 @@
   * Deprecated variants that don't have enough underscores to be useful in more
   * strict namespaces.
@@ -1066,8 +1110,10 @@ Staging area for fixes needed by userland.
  #define	LITTLE_ENDIAN	_LITTLE_ENDIAN
  #define	BIG_ENDIAN	_BIG_ENDIAN
  #define	PDP_ENDIAN	_PDP_ENDIAN
---- a/sys/x86/include/stdarg.h
-+++ b/sys/x86/include/stdarg.h
+Index: kfreebsd-10/sys/x86/include/stdarg.h
+===================================================================
+--- kfreebsd-10.orig/sys/x86/include/stdarg.h
++++ kfreebsd-10/sys/x86/include/stdarg.h
 @@ -34,6 +34,8 @@
  #include <sys/cdefs.h>
  #include <sys/_types.h>
@@ -1077,15 +1123,17 @@ Staging area for fixes needed by userland.
  #ifndef _VA_LIST_DECLARED
  #define	_VA_LIST_DECLARED
  typedef	__va_list	va_list;
-@@ -74,4 +76,6 @@
+@@ -74,4 +76,6 @@ typedef	__va_list	va_list;
  #error this file needs to be ported to your compiler
  #endif
  
 +#endif
 +
  #endif /* !_MACHINE_STDARG_H_ */
---- a/sys/sys/syslimits.h
-+++ b/sys/sys/syslimits.h
+Index: kfreebsd-10/sys/sys/syslimits.h
+===================================================================
+--- kfreebsd-10.orig/sys/sys/syslimits.h
++++ kfreebsd-10/sys/sys/syslimits.h
 @@ -33,15 +33,6 @@
  #ifndef _SYS_SYSLIMITS_H_
  #define _SYS_SYSLIMITS_H_
