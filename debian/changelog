@@ -1,6 +1,16 @@
 kfreebsd-10 (10.3~svn295289-1) UNRELEASED; urgency=medium
 
   * New upstream snapshot of 10.3-BETA1
+  * Refresh patches:
+    - userland.diff
+    - 004_xargs.diff
+    - 902_version.diff
+    - 904_dev_full.diff
+    - 908_linprocfs_is_not_proc.diff
+    - 920_linux_cflags.diff
+    - 921_signal_watchdog.diff
+    - 922_cc_version.diff
+    - 923_newvers_timestamp.diff
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Sat, 06 Feb 2016 16:23:08 +0000
 

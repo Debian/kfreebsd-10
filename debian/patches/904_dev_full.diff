@@ -3,7 +3,7 @@ Status: rejected in upstream (kern/68961)
 
 --- a/sys/dev/null/null.c
 +++ b/sys/dev/null/null.c
-@@ -46,9 +46,11 @@
+@@ -45,9 +45,11 @@
  
  /* For use with destroy_dev(9). */
  static struct cdev *null_dev;
@@ -15,7 +15,7 @@ Status: rejected in upstream (kern/68961)
  static d_ioctl_t null_ioctl;
  static d_ioctl_t zero_ioctl;
  static d_read_t zero_read;
-@@ -61,6 +63,14 @@
+@@ -60,6 +62,14 @@
  	.d_name =	"null",
  };
  
@@ -30,7 +30,7 @@ Status: rejected in upstream (kern/68961)
  static struct cdevsw zero_cdevsw = {
  	.d_version =	D_VERSION,
  	.d_read =	zero_read,
-@@ -81,6 +91,15 @@
+@@ -80,6 +90,15 @@
  
  /* ARGSUSED */
  static int
@@ -46,7 +46,7 @@ Status: rejected in upstream (kern/68961)
  null_ioctl(struct cdev *dev __unused, u_long cmd, caddr_t data __unused,
      int flags __unused, struct thread *td)
  {
-@@ -158,12 +177,15 @@
+@@ -155,12 +174,15 @@
  			printf("null: <null device, zero device>\n");
  		null_dev = make_dev_credf(MAKEDEV_ETERNAL_KLD, &null_cdevsw, 0,
  		    NULL, UID_ROOT, GID_WHEEL, 0666, "null");

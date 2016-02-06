@@ -3,9 +3,9 @@ some other term (such as a compiler flag) when grepping for the compiler
 version.
 --- a/sys/conf/newvers.sh
 +++ b/sys/conf/newvers.sh
-@@ -89,7 +89,7 @@
- touch version
- v=`cat version` u=${USER:-root} d=`pwd` h=${HOSTNAME:-`hostname`} t=`date`
+@@ -97,7 +97,7 @@
+ 	t=`date`
+ fi
  i=`${MAKE:-make} -V KERN_IDENT`
 -compiler_v=$($(${MAKE:-make} -V CC) -v 2>&1 | grep 'version')
 +compiler_v=$($(${MAKE:-make} -V CC) -v 2>&1 | grep ' version ')
