@@ -14,7 +14,7 @@ Build-Depends:
  bzip2,
  sharutils,
  flex-old | flex,
- freebsd-buildutils (>= 10.0-3~),
+ freebsd-buildutils (>= 10.3~),
  freebsd-glue (>= 0.2.20~),
  byacc,
  @cc_pkg@,
