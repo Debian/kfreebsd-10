@@ -1,6 +1,6 @@
-kfreebsd-10 (10.3~svn295289-1) UNRELEASED; urgency=medium
+kfreebsd-10 (10.3~svn296373-1) UNRELEASED; urgency=medium
 
-  * New upstream snapshot of 10.3-BETA1
+  * New upstream snapshot of 10.3-RC1
   * Make get-orig-source tarball reproducible
   * Replace BUILD_DATE with SOURCE_DATE_EPOCH
   * Refresh patches:
