@@ -13,6 +13,7 @@ kfreebsd-10 (10.3~svn295289-1) UNRELEASED; urgency=medium
     - 921_signal_watchdog.diff
     - 922_cc_version.diff
     - 923_newvers_timestamp.diff
+  * Bump Build-Depends: freebsd-buildutils to (>= 10.3~)
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Sat, 06 Feb 2016 16:23:08 +0000
 
