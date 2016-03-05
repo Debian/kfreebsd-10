@@ -30,3 +30,30 @@ http://savannah.gnu.org/patch/?4916
  
  # canonify include paths
  for H in ${src_headers}; do
+--- a/sys/conf/kern.post.mk
++++ b/sys/conf/kern.post.mk
+@@ -208,16 +208,17 @@
+ # C files
+ 	${MAKE} -V CFILES_NORMAL -V SYSTEM_CFILES -V GEN_CFILES | \
+ 	    MKDEP_CPP="${CC} -E" CC="${CC}" xargs mkdep -a -f ${.TARGET}.tmp ${CFLAGS}
+-	${MAKE} -V CFILES_ZFS | \
+-	    MKDEP_CPP="${CC} -E" CC="${CC}" xargs mkdep -a -f ${.TARGET}.tmp ${ZFS_CFLAGS}
+-	${MAKE} -V CFILES_OFED -V CFILES_MLX5 | \
+-	    MKDEP_CPP="${CC} -E" CC="${CC}" xargs mkdep -a -f ${.TARGET}.tmp \
+-		${CFLAGS} ${OFEDINCLUDES}
++	# GNU xargs behaves differently when given a single newline character.
++#	${MAKE} -V CFILES_ZFS | \
++#	    MKDEP_CPP="${CC} -E" CC="${CC}" xargs mkdep -a -f ${.TARGET}.tmp ${ZFS_CFLAGS}
++#	${MAKE} -V CFILES_OFED -V CFILES_MLX5 | \
++#	    MKDEP_CPP="${CC} -E" CC="${CC}" xargs mkdep -a -f ${.TARGET}.tmp \
++#		${CFLAGS} ${OFEDINCLUDES}
+ # Assembly files
+ 	${MAKE} -V SFILES_NORMAL | \
+ 	    MKDEP_CPP="${CC} -E" CC="${CC}" xargs mkdep -a -f ${.TARGET}.tmp ${ASM_CFLAGS}
+-	${MAKE} -V SFILES_ZFS | \
+-	    MKDEP_CPP="${CC} -E" CC="${CC}" xargs mkdep -a -f ${.TARGET}.tmp ${ZFS_ASM_CFLAGS}
++#	${MAKE} -V SFILES_ZFS | \
++#	    MKDEP_CPP="${CC} -E" CC="${CC}" xargs mkdep -a -f ${.TARGET}.tmp ${ZFS_ASM_CFLAGS}
+ 	mv ${.TARGET}.tmp ${.TARGET}
+ 
+ _ILINKS= machine
