@@ -84,14 +84,6 @@ MAKE += -DWITHOUT_CTF
 # "unstripped-binary-or-object" lintian error).
 MAKE += -DWITHOUT_KERNEL_SYMBOLS	
 
-# Disable ssp for now ...
-# at least under QEMU it panics, might be due to
-#   - QEMU
-#   - newer gcc compared to plain FreeBSD
-#   - different init order
-#   - ...
-MAKE += -DWITHOUT_SSP
-
 get-orig-source:
 	rm -rf $(ORIG_DIR)
 	svn export --ignore-keywords -r $(svn_revision) $(SVN)/sys $(ORIG_DIR)/sys
@@ -228,7 +220,7 @@ build-flavor-%-stamp: src-flavor-%-stamp
 
 	# We must rebuild firmware from sources, per the DFSG
 	CFLAGS='-D_GNU_SOURCE -isystem /usr/include/freebsd' LDFLAGS='-ldb -lbsd' \
-	 $(MAKE) CC=$(cc_cmd) -C $(FLAVOR_DIR)-$*/sys/modules/aic7xxx/ firmware
+	 $(MAKE) -DWITHOUT_SSP CC=$(cc_cmd) -C $(FLAVOR_DIR)-$*/sys/modules/aic7xxx/ firmware
 
 	# Build it
 	$(MAKE) CC=$(cc_cmd) -C $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/compile/$(configfile)/ depend

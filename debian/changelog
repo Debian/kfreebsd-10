@@ -5,6 +5,8 @@ kfreebsd-10 (10.3~svn296373-2) UNRELEASED; urgency=medium
     new MK knobs from 10.3 are needed.
   * Re-enable debugging options:
     - 999_config.diff
+  * Enable Stack-Smashing Protection (disable it only when building the
+    aic7xxx firmware toolchain).
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Fri, 11 Mar 2016 11:39:19 +0000
 
