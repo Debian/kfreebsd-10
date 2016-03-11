@@ -16,6 +16,7 @@ Build-Depends:
  flex-old | flex,
  freebsd-buildutils (>= 10.3~),
  freebsd-glue (>= 0.2.20~),
+ freebsd-mk (>= 10.3~),
  byacc,
  @cc_pkg@,
  libdb-dev,
