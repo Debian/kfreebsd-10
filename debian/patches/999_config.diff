@@ -103,7 +103,7 @@
 +options         IPSEC_NAT_T             #NAT-T support, UDP encap of ESP
 --- /dev/null
 +++ b/sys/conf/DEBIAN_DEBUG
-@@ -0,0 +1,22 @@
+@@ -0,0 +1,28 @@
 +makeoptions	DEBUG=-g		# Build kernel with gdb(1) debug symbols
 +
 +## Not yet
@@ -123,6 +123,12 @@
 +options 	WITNESS			# Enable checks to detect deadlocks and cycles
 +options 	WITNESS_SKIPSPIN	# Don't run witness on spinlocks for speed
 +options 	MALLOC_DEBUG_MAXZONES	# Separate malloc(9) zones
++
++#
++# DEBUG_REDZONE enables buffer underflows and buffer overflows detection for
++# malloc(9).
++#
++options         DEBUG_REDZONE
 +
 +# Disable minimum debugger support
 +nooptions 	KDB_TRACE		# Print a stack trace for a panic.
