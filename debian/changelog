@@ -3,6 +3,8 @@ kfreebsd-10 (10.3~svn296373-2) UNRELEASED; urgency=medium
   * Directly declare Build-Depends: freebsd-mk (>= 10.3~),
     since freebsd-glue dropped this build-dependency, and
     new MK knobs from 10.3 are needed.
+  * Re-enable debugging options:
+    - 999_config.diff
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Fri, 11 Mar 2016 11:39:19 +0000
 
