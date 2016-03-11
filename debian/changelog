@@ -1,11 +1,11 @@
-kfreebsd-10 (10.3~svn296373-2) UNRELEASED; urgency=medium
+kfreebsd-10 (10.3~svn296373-2) experimental; urgency=medium
 
-  * Directly declare Build-Depends: freebsd-mk (>= 10.3~),
-    since freebsd-glue dropped this build-dependency, and
-    new MK knobs from 10.3 are needed.
+  * Directly declare Build-Depends: freebsd-mk (>= 10.3~), since
+    freebsd-glue dropped this build-dependency, and new MK knobs in
+    10.3 are needed.
   * Re-enable debugging options:
     - 999_config.diff
-  * Enable redzone(9) heap smashing detection for debug builds only.
+  * Enable redzone(9) heap-smashing detection for debug builds only.
   * Enable Stack-Smashing Protection (disable it only when building the
     aic7xxx firmware toolchain).
 
