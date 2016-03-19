@@ -1,5 +1,6 @@
-kfreebsd-10 (10.3~svn296373-3) UNRELEASED; urgency=medium
+kfreebsd-10 (10.3~svn296998-1) UNRELEASED; urgency=medium
 
+  * New upstream snapshot of 10.3-RC3
   * Amend svn_revision regex to support local suffixes
     (Thanks, Jon Boden) (Closes: #818700)
 
