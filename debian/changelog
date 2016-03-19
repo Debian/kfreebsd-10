@@ -1,3 +1,10 @@
+kfreebsd-10 (10.3~svn296373-3) UNRELEASED; urgency=medium
+
+  * Amend svn_revision regex to support local suffixes
+    (Thanks, Jon Boden) (Closes: #818700)
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Sat, 19 Mar 2016 20:49:47 +0000
+
 kfreebsd-10 (10.3~svn296373-2) experimental; urgency=medium
 
   * Directly declare Build-Depends: freebsd-mk (>= 10.3~), since
