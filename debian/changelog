@@ -1,6 +1,8 @@
-kfreebsd-10 (10.3~svn296998-1) UNRELEASED; urgency=medium
+kfreebsd-10 (10.3~svn296998-1) experimental; urgency=medium
 
-  * New upstream snapshot of 10.3-RC3
+  * New upstream snapshot of 10.3-RC3:
+    - SA-16:15: Fix incorrect argument validation in sysarch(2).
+      (CVE-2016-1885) (Closes: #818426)
   * Amend svn_revision regex to support local suffixes
     (Thanks, Jon Boden) (Closes: #818700)
   * On arches that don't use Clang, Build-Depend on gcc-5
