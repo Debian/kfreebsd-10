@@ -63,12 +63,12 @@ MAKE		:= \
 clang_cpus	:= i386 amd64 arm
 
 cc_pkg		:= clang-3.5 [$(foreach cpu,$(clang_cpus),any-$(cpu))], \
-		gcc-4.9 [$(foreach cpu,$(clang_cpus),!any-$(cpu))]
+		gcc-5 [$(foreach cpu,$(clang_cpus),!any-$(cpu))]
 
 ifneq (, $(filter $(clang_cpus), $(DEB_HOST_ARCH_CPU)))
 cc_cmd		:= clang-3.5
 else
-cc_cmd		:= gcc-4.9
+cc_cmd		:= gcc-5
 endif
 
 ifeq ($(cc_cmd), clang)

@@ -3,6 +3,8 @@ kfreebsd-10 (10.3~svn296998-1) UNRELEASED; urgency=medium
   * New upstream snapshot of 10.3-RC3
   * Amend svn_revision regex to support local suffixes
     (Thanks, Jon Boden) (Closes: #818700)
+  * On arches that don't use Clang, Build-Depend on gcc-5
+    rather than gcc-4.9 (Closes: #818777)
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Sat, 19 Mar 2016 20:49:47 +0000
 
