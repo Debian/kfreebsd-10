@@ -1,3 +1,10 @@
+kfreebsd-10 (10.3~svn296998-2) UNRELEASED; urgency=medium
+
+  * Disable Stack Smashing Protection when building with GCC
+    (see #819754)
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Fri, 01 Apr 2016 22:24:32 +0100
+
 kfreebsd-10 (10.3~svn296998-1) experimental; urgency=medium
 
   * New upstream snapshot of 10.3-RC3:

@@ -69,6 +69,8 @@ ifneq (, $(filter $(clang_cpus), $(DEB_HOST_ARCH_CPU)))
 cc_cmd		:= clang-3.5
 else
 cc_cmd		:= gcc-5
+# Disable Stack Smashing Protection when building with GCC (see #819754)
+MAKE	+= -DWITHOUT_SSP
 endif
 
 ifeq ($(cc_cmd), clang)
