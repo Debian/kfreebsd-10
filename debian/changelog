@@ -1,6 +1,6 @@
-kfreebsd-10 (10.3~svn296998-2) UNRELEASED; urgency=medium
+kfreebsd-10 (10.3~svn296998-2) experimental; urgency=medium
 
-  * Experimentally build all arches with GCC for now
+  * Experimentally build all arches with GCC for now (Closes: #813727)
   * Disable Stack Smashing Protection when building with GCC
     (see #819754)
   * Prevent improper #include of mm_malloc.h by GCC headers
