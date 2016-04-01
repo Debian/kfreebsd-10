@@ -86,6 +86,9 @@ MAKE += -DWITHOUT_CTF
 # "unstripped-binary-or-object" lintian error).
 MAKE += -DWITHOUT_KERNEL_SYMBOLS	
 
+# Prevent improper #include of mm_malloc.h by GCC headers
+CFLAGS += -D_MM_MALLOC_H_INCLUDED
+
 get-orig-source:
 	rm -rf $(ORIG_DIR)
 	svn export --ignore-keywords -r $(svn_revision) $(SVN)/sys $(ORIG_DIR)/sys
@@ -226,7 +229,8 @@ build-flavor-%-stamp: src-flavor-%-stamp
 
 	# Build it
 	$(MAKE) CC=$(cc_cmd) -C $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/compile/$(configfile)/ depend
-	$(MAKE) CC=$(cc_cmd) -C $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/compile/$(configfile)/
+	CFLAGS='$(CFLAGS)' \
+	 $(MAKE) CC=$(cc_cmd) -C $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/compile/$(configfile)/
 
 	touch build-flavor-$*-stamp
 
