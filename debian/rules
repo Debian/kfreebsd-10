@@ -372,6 +372,10 @@ ifeq ($(DEB_HOST_ARCH_OS), kfreebsd)
 		install -p -o root -g root -m 644 \
 			debian/zlib-modules.overrides \
 			$(CURDIR)/debian/zlib-modules-$(version)-$(abiname)-$${subarch}-di/usr/share/lintian/overrides/zlib-modules-$(version)-$(abiname)-$${subarch}-di ; \
+		mkdir -p $(CURDIR)/debian/zfs-modules-$(version)-$(abiname)-$${subarch}-di/usr/share/lintian/overrides ; \
+		install -p -o root -g root -m 644 \
+			debian/zfs-modules.overrides \
+			$(CURDIR)/debian/zfs-modules-$(version)-$(abiname)-$${subarch}-di/usr/share/lintian/overrides/zfs-modules-$(version)-$(abiname)-$${subarch}-di ; \
 		\
 		# fixup kernel path (so that this udeb can be installed alongside other major versions of kfreebsd) \n\
 		mv debian/kernel-image-$(version)-$(abiname)-$${subarch}-di/boot/kfreebsd{,-$(major)}.gz ; \

@@ -4,6 +4,8 @@ kfreebsd-10 (10.3~svn296998-2) experimental; urgency=medium
   * Disable Stack Smashing Protection when building with GCC
     (see #819754)
   * Prevent improper #include of mm_malloc.h by GCC headers
+  * Add lintian override for "embedded-library" (zfs.ko) since kernel
+    code cannot link against zlib.
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Fri, 01 Apr 2016 22:24:32 +0100
 
