@@ -48,7 +48,7 @@
  options 	SYSVSHM			# SYSV-style shared memory
 --- /dev/null
 +++ b/sys/conf/DEBIAN
-@@ -0,0 +1,52 @@
+@@ -0,0 +1,45 @@
 +# Common options to all Debian GNU/kFreeBSD kernels
 +
 +options		LINPROCFS
@@ -75,10 +75,6 @@
 +# but unfortunetely glibc doesn't support pts(4) yet (see #667448).
 +device		pty
 +
-+# Toggle to enable/disable debug options.
-+include		DEBIAN_DEBUG
-+#include		DEBIAN_NODEBUG
-+
 +# Alternate queueing
 +options		ALTQ
 +options		ALTQ_CBQ	# Class Bases Queuing (CBQ)
@@ -86,9 +82,6 @@
 +options		ALTQ_RIO	# RED In/Out
 +options		ALTQ_HFSC	# Hierarchical Packet Scheduler (HFSC)
 +options		ALTQ_PRIQ	# Priority Queuing (PRIQ)
-+
-+# Disable binary blobs
-+include		WITHOUT_SOURCELESS
 +
 +# In order to enable IPSEC you MUST also add device crypto to
 +# your kernel configuration

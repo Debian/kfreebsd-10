@@ -20,9 +20,22 @@ revision	:= $(shell echo $(full_version) | sed -e 's/^[^+-]*//g')
 cpu		:= $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU)
 config_files	:= $(wildcard debian/arch/$(cpu)/*.config)
 flavours	:= $(config_files:debian/arch/$(cpu)/%.config=%)
-configfile	:= DEBCUSTOM
-abiname		:= 0
 ld_target	:= $(shell ld --help | sed -ne "s/[^ :]*: supported targets: \([^ ]*\) .*/\1/p")
+configfile	:= DEBCUSTOM
+
+# Whether to enable extra debug features, at the expense of performance
+# Not recommended for release builds
+debug		:= yes
+
+# Produce a DFSG-free package by default, stripping out sourceless
+# (non-free) blobs.  Put +nonfree or +sourceless in the Version field
+# to keep the non-free parts and build non-free drivers
+nonfree		:= $(findstring +nonfree,$(full_version))$(findstring +sourceless,$(full_version))
+
+abiname		:= 0
+# Clearly indicate if the build is non-free, and make it
+# co-installable with DFSG-free versions
+abiname		:= $(abiname)$(nonfree)
 
 ifeq ($(cpu), mipsel)
 kfreebsd_cpu	:= mips
@@ -58,8 +71,12 @@ endif
 MAKE		:= \
 		MAKEFLAGS=$(BSD_MAKEFLAGS) \
 		make \
-		MACHINE_ARCH=$(kfreebsd_cpu) \
-		-DWITHOUT_SOURCELESS
+		MACHINE_ARCH=$(kfreebsd_cpu)
+
+ifeq ($(nonfree),)
+# Disable non-free drivers
+MAKE		+= -DWITHOUT_SOURCELESS
+endif
 
 # Clang is the default compiler on these architectures (see src/share/mk/bsd.own.mk)
 clang_cpus	:= # i386 amd64 arm
@@ -96,7 +113,15 @@ CFLAGS += -D_MM_MALLOC_H_INCLUDED
 get-orig-source:
 	rm -rf $(ORIG_DIR)
 	svn export --ignore-keywords -r $(svn_revision) $(SVN)/sys $(ORIG_DIR)/sys
+ifeq ($(nonfree),)
+	# Removing non-free blobs to make source package DFSG-free
 	cd $(ORIG_DIR) && $(CURDIR)/debian/prune.sh
+	# Replace file with a DFSG-free re-implementation
+	cp -af debian/local/ar9300_devid.h $(ORIG_DIR)/sys/contrib/dev/ath/ath_hal/ar9300/
+	cp -af debian/local/ar9300_devid.h $(ORIG_DIR)/sys/dev/ath/ath_hal/ar9003/
+else
+	# WARNING: orig source tarball will contain non-free blobs
+endif
 	# Clamp timestamps to be no newer than last changelog entry, see
 	# https://wiki.debian.org/ReproducibleBuilds/TimestampsInTarball
 	find $(ORIG_DIR) -newermt "@$(SOURCE_DATE_EPOCH)" -print0 \
@@ -201,6 +226,14 @@ src-flavor-%-stamp:
 	 \( -name Makefile -o -name Makefile.inc \) \
 	 -exec sed -i 's@$${.CURDIR}/@@g' \{\} \;
 
+ifneq ($(nonfree),)
+	# Use appropriate syntax for GNU uudecode,
+	# only needed for non-free blobs
+	find $(FLAVOR_DIR)-$*/sys/modules/ \
+	 \( -name Makefile -o -name Makefile.inc \) \
+	 -exec sed -i 's/uudecode -p/uudecode -o -/' \{\} \;
+endif
+
 	touch $@
 build-flavor-%-stamp: src-flavor-%-stamp
 	# Add the abiname and the flavor to the kernel version
@@ -222,7 +255,23 @@ build-flavor-%-stamp: src-flavor-%-stamp
 	$(FLAVOR_DIR)-$*/sys/conf/ldscript.$(kfreebsd_cpu)
 
 	# Configure the kernel
-	cp debian/arch/$(cpu)/$*.config $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/conf/
+	cp -af debian/arch/$(cpu)/$*.config $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/conf/
+	echo "# Debian package build options" >> \
+		$(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/conf/$*.config
+ifneq ($(debug),no)
+	# Extra debugging options are enabled
+	echo "include 	DEBIAN_DEBUG" >> \
+		$(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/conf/$*.config
+else
+	# Extra debugging options are disabled
+	echo "include 	DEBIAN_NODEBUG" >> \
+		$(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/conf/$*.config
+endif
+ifeq ($(nonfree),)
+	# Disable non-free drivers
+	echo "include 	WITHOUT_SOURCELESS" >> \
+		$(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/conf/$*.config
+endif
 	ln -sf $*.config $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/conf/$(configfile)
 	cd $(FLAVOR_DIR)-$*/sys/$(kfreebsd_cpu)/conf \
 		&& config $(configfile)

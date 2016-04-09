@@ -1,3 +1,13 @@
+kfreebsd-10 (10.3~svn296998-3) UNRELEASED; urgency=medium
+
+  * Simplify the procedure to enable debug builds in debian/rules
+  * Simplify the procedure to build with non-free drivers and blobs,
+    enabled by putting +nonfree or +sourceless in the Version field
+    (Thanks, Jon Boden, for the original patch this is based on)
+    (Closes: #820151)
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Mon, 04 Apr 2016 11:04:58 +0100
+
 kfreebsd-10 (10.3~svn296998-2) experimental; urgency=medium
 
   * Experimentally build all arches with GCC for now (Closes: #813727)
