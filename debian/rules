@@ -429,6 +429,7 @@ ifeq ($(DEB_HOST_ARCH_OS), kfreebsd)
 		install -p -o root -g root -m 644 \
 			debian/zlib-modules.overrides \
 			$(CURDIR)/debian/zlib-modules-$(version)-$(abiname)-$${subarch}-di/usr/share/lintian/overrides/zlib-modules-$(version)-$(abiname)-$${subarch}-di ; \
+		# override file \n\
 		mkdir -p $(CURDIR)/debian/zfs-modules-$(version)-$(abiname)-$${subarch}-di/usr/share/lintian/overrides ; \
 		install -p -o root -g root -m 644 \
 			debian/zfs-modules.overrides \

@@ -14,12 +14,14 @@ kfreebsd-10 (10.3~svn297264-1~debug1) UNRELEASED; urgency=medium
 
 kfreebsd-10 (10.3~svn296998-2) experimental; urgency=medium
 
+  [ Steven Chamberlain ]
   * Experimentally build all arches with GCC for now (Closes: #813727)
   * Disable Stack Smashing Protection when building with GCC
     (see #819754)
   * Prevent improper #include of mm_malloc.h by GCC headers
-  * Add lintian override for "embedded-library" (zfs.ko) since kernel
-    code cannot link against zlib.
+
+  [ Christoph Egger ]
+  * Also install zlib lintian override for zfs.ko
 
  -- Steven Chamberlain <steven@pyro.eu.org>  Fri, 01 Apr 2016 22:24:32 +0100
 
