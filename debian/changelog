@@ -1,4 +1,4 @@
-kfreebsd-10 (10.3~svn297264-1~debug1) UNRELEASED; urgency=medium
+kfreebsd-10 (10.3~svn297264-1~debug1) experimental; urgency=medium
 
   * New upstream snapshot of 10.3-RELEASE
   * Simplify the procedure to enable debug builds in debian/rules,
