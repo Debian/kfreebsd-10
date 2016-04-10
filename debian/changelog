@@ -1,6 +1,8 @@
-kfreebsd-10 (10.3~svn296998-3) UNRELEASED; urgency=medium
+kfreebsd-10 (10.3~svn297264-1~debug1) UNRELEASED; urgency=medium
 
-  * Simplify the procedure to enable debug builds in debian/rules
+  * New upstream snapshot of 10.3-RELEASE
+  * Simplify the procedure to enable debug builds in debian/rules,
+    enabled by putting ~debug in the Version field
   * Simplify the procedure to build with non-free drivers and blobs,
     enabled by putting +nonfree or +sourceless in the Version field
     (Thanks, Jon Boden, for the original patch this is based on)
@@ -8,7 +10,7 @@ kfreebsd-10 (10.3~svn296998-3) UNRELEASED; urgency=medium
   * Relocate /lib/modules/ into /boot/, so that GRUB can load kernel
     modules even if /lib is on an unsupported or encrypted filesystem
 
- -- Steven Chamberlain <steven@pyro.eu.org>  Mon, 04 Apr 2016 11:04:58 +0100
+ -- Steven Chamberlain <steven@pyro.eu.org>  Sun, 10 Apr 2016 14:57:50 +0100
 
 kfreebsd-10 (10.3~svn296998-2) experimental; urgency=medium
 

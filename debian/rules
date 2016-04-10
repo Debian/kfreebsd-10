@@ -25,7 +25,11 @@ configfile	:= DEBCUSTOM
 
 # Whether to enable extra debug features, at the expense of performance
 # Not recommended for release builds
+debug		:= no
+# Putting ~debug in the Version field enbles this automatically
+ifneq ($(findstring ~debug,$(full_version)),)
 debug		:= yes
+endif
 
 # Produce a DFSG-free package by default, stripping out sourceless
 # (non-free) blobs.  Put +nonfree or +sourceless in the Version field
