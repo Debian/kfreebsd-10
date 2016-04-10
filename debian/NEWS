@@ -1,3 +1,22 @@
+kfreebsd-10 (10.3~svn296998-3) experimental; urgency=medium
+
+  Loadable kernel modules are now installed to /boot/modules/, rather
+  than /lib/modules/.  This ensures GRUB2 can easily load them at boot,
+  even if /lib resides on a different file system.
+
+  This change will make encrypted root filesystems more practical,
+  perhaps not needing an initramfs.
+
+  Please ensure that /boot has sufficient space, around 20-30 MiB for
+  each installed kernel.
+
+  If you have converted /lib/modules/ into a symlink to
+  /boot/modules/, the package should still install correctly.
+  Otherwise, installing this package will create a symlink from
+  /lib/modules/* to /boot/modules/* for backward compatibility.
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Sun, 10 Apr 2016 14:29:08 +0100
+
 kfreebsd-10 (10.1~svn273581-1) experimental; urgency=high
 
   If upgrading to kfreebsd 10.1 from wheezy, certain userland tools
