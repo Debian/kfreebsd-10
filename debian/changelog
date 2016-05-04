@@ -1,3 +1,11 @@
+kfreebsd-10 (10.3~svn299066-1~debug1) UNRELEASED; urgency=medium
+
+  * Pick SVN r299066 from FreeBSD 10.3-RELEASE:
+    - EN-16:07: Fix excessive latency in x86 IPI delivery.
+    - EN-16:08: Fix memory leak in ZFS.
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Wed, 04 May 2016 17:30:02 +0100
+
 kfreebsd-10 (10.3~svn297264-1~debug1) experimental; urgency=medium
 
   * New upstream snapshot of 10.3-RELEASE
