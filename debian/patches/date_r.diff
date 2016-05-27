@@ -1,0 +1,31 @@
+Date: Fri, 27 May 2016 15:51:47 +0100
+From: Steven Chamberlain <steven@pyro.eu.org>
+Subject: Avoid FTBFS with SOURCE_DATE_EPOCH
+
+Avoid FTBFS due to incompatibility of `date -r`, when
+SOURCE_DATE_EPOCH is exported in the environment.
+
+--- a/sys/conf/newvers.sh
++++ b/sys/conf/newvers.sh
+@@ -89,7 +89,7 @@
+ touch version
+ v=`cat version` u=${USER:-root} d=`pwd` h=${HOSTNAME:-`hostname`}
+ if [ -n "$SOURCE_DATE_EPOCH" ]; then
+-	if ! t=`date -r $SOURCE_DATE_EPOCH 2>/dev/null`; then
++	if ! t=`LANG=C date -ud @$SOURCE_DATE_EPOCH 2>/dev/null`; then
+ 		echo "Invalid SOURCE_DATE_EPOCH" >&2
+ 		exit 1
+ 	fi
+@@ -99,12 +99,6 @@
+ i=`${MAKE:-make} -V KERN_IDENT`
+ compiler_v=$($(${MAKE:-make} -V CC) -v 2>&1 | grep ' version ')
+ 
+-if [ -f "${SYSDIR}/../../debian/changelog" ] ; then
+-	# Use timestamp from the most recent debian/changelog entry,
+-	# instead of the exact time of the build.
+-	t=`dpkg-parsechangelog -l"${SYSDIR}/../../debian/changelog" -S"Date"`
+-fi
+-
+ for dir in /usr/bin /usr/local/bin; do
+ 	if [ ! -z "${svnversion}" ] ; then
+ 		break

@@ -1,3 +1,10 @@
+kfreebsd-10 (10.3~svn300087-1~debug2) UNRELEASED; urgency=medium
+
+  * Avoid FTBFS due to incompatibility of `date -r`, when
+    SOURCE_DATE_EPOCH is exported in the environment.
+
+ -- Steven Chamberlain <steven@pyro.eu.org>  Fri, 27 May 2016 14:49:02 +0100
+
 kfreebsd-10 (10.3~svn300087-1~debug1) experimental; urgency=medium
 
   * Pick SVN r300087 from FreeBSD 10.3-RELEASE to fix:
