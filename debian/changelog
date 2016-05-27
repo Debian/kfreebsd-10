@@ -1,4 +1,4 @@
-kfreebsd-10 (10.3~svn300087-1~debug1) UNRELEASED; urgency=medium
+kfreebsd-10 (10.3~svn300087-1~debug1) experimental; urgency=medium
 
   * Pick SVN r300087 from FreeBSD 10.3-RELEASE to fix:
     - EN-16:07: Excessive latency in x86 IPI delivery.
