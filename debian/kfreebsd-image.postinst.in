@@ -45,6 +45,11 @@ case "$1" in
                 --arg=/boot/kfreebsd-$RELEASE.gz \
                 /etc/kernel/postinst.d
         fi
+
+        # Notify that a reboot is required
+        if [ -x "/usr/share/update-notifier/notify-reboot-required" ] ; then
+            /usr/share/update-notifier/notify-reboot-required
+        fi
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
