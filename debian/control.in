@@ -13,7 +13,7 @@ Build-Depends:
  debhelper (>= 5.0.0),
  bzip2,
  sharutils,
- flex-old | flex,
+ flex,
  freebsd-buildutils (>= 10.3~),
  freebsd-glue (>= 0.2.20~),
  freebsd-mk (>= 10.3~),
