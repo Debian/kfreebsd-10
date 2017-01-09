@@ -1,4 +1,4 @@
-kfreebsd-10 (10.3~svn300087-2) UNRELEASED; urgency=medium
+kfreebsd-10 (10.3~svn300087-2) unstable; urgency=medium
 
   * In postinst, call update-notifier/notify-reboot-required
     (thanks, Jon Boden!) (Closes: #827072)
