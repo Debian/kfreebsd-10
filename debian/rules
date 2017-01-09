@@ -85,15 +85,15 @@ endif
 # Clang is the default compiler on these architectures (see src/share/mk/bsd.own.mk)
 clang_cpus	:= # i386 amd64 arm
 # Experimentally build all arches with GCC for now
-cc_pkg		:= gcc-5
+cc_pkg		:= gcc-6
 
 #cc_pkg		:= clang-3.5 [$(foreach cpu,$(clang_cpus),any-$(cpu))], \
-#		gcc-5 [$(foreach cpu,$(clang_cpus),!any-$(cpu))]
+#		gcc-6 [$(foreach cpu,$(clang_cpus),!any-$(cpu))]
 
 ifneq (, $(filter $(clang_cpus), $(DEB_HOST_ARCH_CPU)))
 cc_cmd		:= clang-3.5
 else
-cc_cmd		:= gcc-5
+cc_cmd		:= gcc-6
 # Disable Stack Smashing Protection when building with GCC (see #819754)
 MAKE	+= -DWITHOUT_SSP
 endif
