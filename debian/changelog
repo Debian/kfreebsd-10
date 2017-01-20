@@ -1,3 +1,10 @@
+kfreebsd-10 (10.3~svn300087-3) UNRELEASED; urgency=medium
+
+  * Really build with gcc-6 (Closes: #852006);  forgot to regenerate
+    debian/control in the previous upload
+
+ -- Steven Chamberlain <stevenc@debian.org>  Fri, 20 Jan 2017 17:40:36 +0000
+
 kfreebsd-10 (10.3~svn300087-2) unstable; urgency=medium
 
   * In postinst, call update-notifier/notify-reboot-required
